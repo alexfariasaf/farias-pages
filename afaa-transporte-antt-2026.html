@@ -185,6 +185,8 @@
   @media(max-width:680px){.sys-grid{grid-template-columns:1fr}}
 
   /* tables */
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0;border-radius:14px}
+  .tbl-wrap .tbl{margin:0;min-width:540px}
   .tbl{width:100%;border-collapse:collapse;font-size:.9rem;background:var(--surface);
     border-radius:14px;overflow:hidden;border:1px solid var(--line);margin:16px 0}
   .tbl th{background:var(--surface2);text-align:left;padding:13px 16px;
@@ -315,6 +317,15 @@
   @media(max-width:680px){
     .diag,.router,.author{padding:26px}
     .scene-num{font-size:1.8rem}
+    .wrap{padding:0 18px}
+    h1.title{font-size:clamp(1.9rem,7.6vw,2.6rem)}
+    .lede{font-size:1.05rem}
+    header.hero{padding:64px 0 40px}
+    .tbl{font-size:.84rem}
+    .tbl th,.tbl td{padding:10px 12px}
+    .scene-inner>p:first-of-type::first-letter{font-size:2.3em;margin:5px 9px 0 0}
+    .scene-head{gap:12px}
+    .diag-result{flex-direction:column;text-align:center;gap:12px}
   }
 </style>
 </head>
@@ -448,7 +459,7 @@
   </div>
   <div class="scene-body"><div class="scene-inner">
     <p>A Resolução SUSEP 51/2025 criou o <strong>Ramo 59</strong> — específico para o RC-V do transporte de cargas, dentro do Grupo 06 (Transportes). O mesmo ramo aparece como código <strong>0659</strong> em sistemas de seguradoras: é a mesma cobertura. Uma apólice emitida no Ramo 0553 (RCF-Auto, do Grupo 05 — Automóvel) <span class="mint">não cumpre a exigência legal</span> e não é reconhecida pelo webservice da ANTT. É erro comum de mercado e fonte certa de suspensão de RNTRC.</p>
-    <table class="tbl">
+    <div class="tbl-wrap"><table class="tbl">
       <thead><tr><th>Critério</th><th>Ramo 0553 (RCF-Auto)</th><th>Ramo 59 / 0659 (RC-V Transporte)</th></tr></thead>
       <tbody>
         <tr><td>Grupo SUSEP</td><td>05 (Automóvel)</td><td>06 (Transportes)</td></tr>
@@ -458,7 +469,7 @@
         <tr><td>Franquia nas coberturas principais</td><td><span class="pill p-mid">Permitida</span></td><td><span class="pill p-top">Vedada</span></td></tr>
         <tr><td>Webservice ANTT</td><td>Não reconhece</td><td>Reconhece</td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p>Limites mínimos obrigatórios do RC-V: <strong>35.000 DES</strong> para danos corporais e <strong>20.000 DES por veículo</strong> para danos materiais. Em cotação de junho/2026 (1 DES ≈ R$ 6,85), isso equivale a cerca de R$ 240 mil e R$ 137 mil por veículo — <em>confira sempre a cotação atualizada do DES antes de fechar a apólice</em>.</p>
     <div class="note">
       <div class="ic">⚠️</div>
@@ -478,7 +489,7 @@
   </div>
   <div class="scene-body"><div class="scene-inner">
     <p>A partir de 01/07/2026, ao emitir o MDF-e, o sistema consulta o webservice da ANTT e checa, em tempo real: RNTRC ativo, RCTR-C, RC-DC e RC-V (Ramo 59/0659) vigentes e CIOT emitido. A comprovação dos seguros chega à ANTT pelo <strong>RNPA Transportes (CNseg)</strong> — plataforma que centraliza os dados das apólices e os transmite ao webservice. Faltando qualquer item, o MDF-e é bloqueado e o RNTRC pode ser suspenso automaticamente — antes do veículo sair do pátio.</p>
-    <table class="tbl">
+    <div class="tbl-wrap"><table class="tbl">
       <thead><tr><th>Data</th><th>Evento</th><th>Efeito</th></tr></thead>
       <tbody>
         <tr><td>19/06/2023</td><td>Lei 14.599 sancionada</td><td>Obrigatoriedade dos 3 seguros</td></tr>
@@ -492,7 +503,7 @@
         <tr><td>01/07/2026</td><td>RNPA Transportes (CNseg) operacional</td><td>Apólices integradas ao webservice ANTT</td></tr>
         <tr><td>01/07/2026</td><td>Webservice em produção</td><td><span class="pill p-top">Verificação automática ativa</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p class="pull">Não é mais "regularizo antes da fiscalização do mês que vem". A verificação é contínua e automática.</p>
   </div></div>
 </section>
@@ -554,14 +565,14 @@
       <div><h4>O que é o CIOT, em uma frase</h4><p>É o código que registra e rastreia o pagamento do frete eletronicamente, ligando contratante, transportador e o valor pago. É a forma de a ANTT cruzar quem pagou, quanto pagou e se respeitou o piso mínimo.</p></div>
     </div>
     <p>A regra central de 2026 é <strong>quem emite o CIOT</strong>:</p>
-    <table class="tbl">
+    <div class="tbl-wrap"><table class="tbl">
       <thead><tr><th>Situação da operação</th><th>Quem emite o CIOT</th></tr></thead>
       <tbody>
         <tr><td>Empresa transportadora ou embarcador contrata TAC ou TAC-equiparado</td><td><strong>O contratante</strong> (emissor do CT-e/MDF-e)</td></tr>
         <tr><td>TAC-equiparado contrata TAC</td><td><strong>O TAC-equiparado</strong></td></tr>
         <tr><td>TAC trabalhando direto com o embarcador</td><td><strong>O próprio TAC</strong></td></tr>
       </tbody>
-    </table>
+    </table></div>
     <div class="note">
       <div class="ic">⚠️</div>
       <div><h4>Multa por operação sem CIOT</h4><p>A penalidade por operar sem CIOT é de aproximadamente <strong>R$ 10.500 por operação</strong>. Responde quem deveria emitir: o contratante (quando há TAC) ou a transportadora (nos demais casos). O TAC fica protegido das penalidades mais graves (suspensão e cancelamento do RNTRC), mas a operação irregular não anda.</p></div>
@@ -581,7 +592,7 @@
   </div>
   <div class="scene-body"><div class="scene-inner">
     <p>A Política Nacional de Pisos Mínimos do Transporte Rodoviário de Cargas (Lei 13.703/2018) ganhou em 2026 dentes que não tinha. A <strong>Res. ANTT 6.076/2026</strong> ajustou o cálculo do coeficiente de frete e a <strong>Res. ANTT 6.077/2026</strong> (24/03/2026) criou um regime de multas pesado para o frete pago abaixo do piso.</p>
-    <table class="tbl">
+    <div class="tbl-wrap"><table class="tbl">
       <thead><tr><th>Conduta</th><th>Consequência</th></tr></thead>
       <tbody>
         <tr><td>Pagamento de frete abaixo do piso mínimo</td><td>Multa de <strong>R$ 1 milhão a R$ 10 milhões</strong> (art. 9º-J)</td></tr>
@@ -589,7 +600,7 @@
         <tr><td>Infração reiterada por empresa</td><td><strong>Desconsideração da personalidade jurídica</strong> — sócios e administradores respondem (art. 9º-M, § 1º)</td></tr>
         <tr><td>Plataformas e apps de frete que ofertam abaixo do piso</td><td>Alcançados pela norma, com multa majorada por reiteração</td></tr>
       </tbody>
-    </table>
+    </table></div>
     <div class="note">
       <div class="ic">🏢</div>
       <div><h4>O risco subiu para o sócio</h4><p>A desconsideração da personalidade jurídica é a novidade mais dura: em infração reiterada ao piso, a responsabilidade pode alcançar o patrimônio pessoal de administradores e sócios da empresa contratante. Não é mais um risco "da empresa" — é um risco de quem decide.</p></div>
@@ -613,7 +624,7 @@
   </div>
   <div class="scene-body"><div class="scene-inner">
     <p>A irregularidade, a partir de 01/07/2026, não gera só advertência: dispara consequências automáticas no sistema. O quadro abaixo resume o que está em jogo, por tipo de falha.</p>
-    <table class="tbl">
+    <div class="tbl-wrap"><table class="tbl">
       <thead><tr><th>Irregularidade</th><th>Efeito imediato</th><th>Sanção adicional</th></tr></thead>
       <tbody>
         <tr><td>Ausência de apólice vigente (qualquer dos 3 seguros)</td><td>Suspensão automática do RNTRC</td><td>Multa de ~R$ 3.000 por operação irregular</td></tr>
@@ -622,7 +633,7 @@
         <tr><td>Frete pago abaixo do piso mínimo</td><td>Notificação / autuação</td><td>Multa de R$ 1 a 10 milhões · reincidência no teto</td></tr>
         <tr><td>Apólice não registrada no RNPA Transportes</td><td>Apólice não aparece para a ANTT</td><td>Tratada como ausência de seguro</td></tr>
       </tbody>
-    </table>
+    </table></div>
     <div class="split">
       <div class="panel">
         <div class="tag">Bloqueio</div>
