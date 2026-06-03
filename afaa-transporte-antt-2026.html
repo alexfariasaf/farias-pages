@@ -13,27 +13,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f6f4ee;
-    --bg2:#ffffff;
-    --surface:#ffffff;
-    --surface2:#efe9dc;
-    --ink:#15314d;
-    --muted:#566472;
-    --faint:#8d99a6;
-    --line:rgba(21,49,77,.12);
-    --accent:#1b3a5c;
-    --accent-dim:#15314d;
-    --accent2:#b8902f;
-    --accent2-dim:#9a7826;
-    --accent3:#2f6f9f;
-    --on-accent:#ffffff;
-    --on-accent2:#241a06;
-    --accent-soft:rgba(27,58,92,.30);
-    --accent-wash:rgba(27,58,92,.045);
-    --glow1:rgba(201,168,76,.14);
-    --glow2:rgba(27,58,92,.06);
-    --nav-bg:rgba(246,244,238,.85);
-    --code-ink:#243447;
+    --bg:#0a111c;
+    --bg2:#0e1726;
+    --surface:#131f31;
+    --surface2:#1b2a40;
+    --ink:#eff3f9;
+    --muted:#a3b3c7;
+    --faint:#61728b;
+    --line:rgba(201,164,78,.16);
+    --accent:#cba14e;
+    --accent-dim:#a8822f;
+    --accent2:#4f93d9;
+    --accent2-dim:#3a77bb;
+    --accent3:#7fb4ea;
+    --on-accent:#1a1304;
+    --on-accent2:#ffffff;
+    --accent-soft:rgba(203,161,78,.34);
+    --accent-wash:rgba(203,161,78,.06);
+    --glow1:rgba(203,161,78,.13);
+    --glow2:rgba(79,147,217,.10);
+    --nav-bg:rgba(10,17,28,.85);
+    --code-ink:#d9c79f;
     --font-display:'Fraunces';
     --font-body:'Source Sans 3';
     --font-mono:'JetBrains Mono';
@@ -64,9 +64,9 @@
   nav.bar .wrap{display:flex;align-items:center;gap:8px;padding:13px 26px}
   .logo{font-family:var(--font-display),sans-serif;font-weight:700;font-size:1rem;
     letter-spacing:-.02em;color:var(--ink);margin-right:auto;display:flex;align-items:center;gap:9px}
-  .logo .mark{width:26px;height:26px;border-radius:7px;
+  .logo .mark{min-width:26px;height:26px;border-radius:7px;padding:0 9px;
     background:linear-gradient(135deg,var(--accent),var(--accent-dim));
-    display:grid;place-items:center;color:var(--on-accent);font-weight:800;font-size:.9rem}
+    display:grid;place-items:center;color:var(--on-accent);font-weight:800;font-size:.9rem;letter-spacing:.04em}
   .logo b{color:var(--accent)}
   nav.bar a.link{text-decoration:none;color:var(--muted);font-size:.82rem;padding:7px 13px;
     border-radius:999px;transition:.25s;font-weight:500;white-space:nowrap}
@@ -307,7 +307,7 @@
 <div class="progress" id="progress"></div>
 
 <nav class="bar"><div class="wrap">
-  <span class="logo"><span class="mark">AF</span><b>AA</b></span>
+  <span class="logo"><span class="mark">AFAA</span></span>
   <a class="link" href="#cena1">O que mudou</a>
   <a class="link" href="#cena2">Os 3 seguros</a>
   <a class="link" href="#cena3">Ramo 59/0659</a>
