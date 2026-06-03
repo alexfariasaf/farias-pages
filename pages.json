@@ -7,6 +7,15 @@
       "brand": "md",
       "summary": "Qual ferramenta de IA usar, quando e por quê — sem juridiquês.",
       "managed": false
+    },
+    {
+      "slug": "afaa-transporte-antt-2026",
+      "title": "Seguro de Transporte de Cargas 2026 — a virada de chave da ANTT",
+      "description": "Estudo informativo do escritório Alex Farias & Advogados sobre a nova regulação do transporte rodoviário de cargas em 2026 — três seguros obrigatórios, fiscalização eletrônica da ANTT e responsabilidades de transportadoras, TAC e embarcadores.",
+      "brand": "afaa",
+      "summary": "O que mudou na ANTT em 2026, os três seguros obrigatórios e quem responde por quê — em linguagem acessível.",
+      "updated": "jun/2026",
+      "managed": true
     }
   ]
 }
