@@ -1,0 +1,12 @@
+{
+  "pages": [
+    {
+      "slug": "md-guia-agentes",
+      "title": "Agentes de Código para Advogados",
+      "description": "Guia descomplicado das ferramentas de IA agêntica para advogados: Antigravity, Claude Code, Codex e o ecossistema Anthropic.",
+      "brand": "md",
+      "summary": "Qual ferramenta de IA usar, quando e por quê — sem juridiquês.",
+      "managed": false
+    }
+  ]
+}

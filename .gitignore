@@ -1,0 +1,8 @@
+# Artefatos internos — NÃO publicar no GitHub Pages
+SKILL.md
+*.skill
+*.zip
+_teste*
+_source/
+.DS_Store
+Thumbs.db
