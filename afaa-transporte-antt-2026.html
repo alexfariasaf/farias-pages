@@ -10,35 +10,35 @@
 <title>Seguro de Transporte de Cargas 2026 — a virada de chave da ANTT</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0e16;
-    --bg2:#0e1320;
-    --surface:#141a28;
-    --surface2:#1b2332;
-    --ink:#eef2f7;
-    --muted:#9aa6b8;
-    --faint:#5d6678;
-    --line:rgba(52,224,161,.14);
-    --accent:#34e0a1;
-    --accent-dim:#27b885;
-    --accent2:#ff7a59;
-    --accent2-dim:#e8633f;
-    --accent3:#2ecc71;
-    --on-accent:#06120c;
-    --on-accent2:#ffffff;
-    --accent-soft:rgba(52,224,161,.35);
-    --accent-wash:rgba(52,224,161,.05);
-    --glow1:rgba(52,224,161,.10);
-    --glow2:rgba(255,122,89,.07);
-    --nav-bg:rgba(10,14,22,.85);
-    --code-ink:#cdebd9;
-    --font-display:'Bricolage Grotesque';
-    --font-body:'Hanken Grotesk';
+    --bg:#030409;
+    --bg2:#0f1117;
+    --surface:#1a1c24;
+    --surface2:#282a32;
+    --ink:#ffffff;
+    --muted:rgba(255,255,255,.78);
+    --faint:rgba(255,255,255,.42);
+    --line:rgba(226,192,116,.18);
+    --accent:#e2c074;
+    --accent-dim:#c9a456;
+    --accent2:#fdba74;
+    --accent2-dim:#e09a4e;
+    --accent3:#5eead4;
+    --on-accent:#030409;
+    --on-accent2:#030409;
+    --accent-soft:rgba(226,192,116,.35);
+    --accent-wash:rgba(226,192,116,.06);
+    --glow1:rgba(226,192,116,.10);
+    --glow2:rgba(94,234,212,.05);
+    --nav-bg:rgba(3,4,9,.85);
+    --code-ink:#ece8df;
+    --font-display:'Sora';
+    --font-body:'DM Sans';
     --font-mono:'JetBrains Mono';
-    --body-weight:350;
-    --r:18px;
+    --body-weight:400;
+    --r:16px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -51,12 +51,17 @@
       radial-gradient(700px 500px at -5% 25%, var(--glow2), transparent 55%);
     background-attachment:fixed;
   }
-  .wrap{max-width:1060px;margin:0 auto;padding:0 26px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
   ::selection{background:var(--accent);color:var(--on-accent)}
+
+  /* noise overlay (assinatura Marcílio) */
+  .noise-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
   /* progress bar */
   .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;
-    background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s linear}
+    background:linear-gradient(90deg,var(--accent3),var(--accent),var(--accent2));
+    box-shadow:0 0 18px rgba(226,192,116,.5);transition:width .1s linear}
 
   /* nav */
   nav.bar{position:sticky;top:0;z-index:50;background:var(--nav-bg);
@@ -85,7 +90,11 @@
   h1.title{font-family:var(--font-display),sans-serif;font-weight:700;
     font-size:clamp(2.5rem,6.5vw,4.7rem);line-height:1.02;letter-spacing:-.025em;
     margin:.35em 0 .3em;opacity:0;animation:rise .9s .22s forwards}
-  h1.title em{font-style:normal;color:var(--accent)}
+  h1.title em{font-style:normal;
+    background:linear-gradient(135deg,var(--accent),var(--accent-dim),#f5dea3,var(--accent));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    background-size:200% 200%;animation:gradient-shift 4s ease infinite}
+  @keyframes gradient-shift{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
   h1.title .c{color:var(--accent2)}
   .lede{font-size:1.15rem;color:var(--muted);max-width:600px;
     opacity:0;animation:rise .9s .36s forwards}
@@ -141,6 +150,8 @@
   .scene.open .scene-body{max-height:4000px}
   .scene-inner{padding:22px 0 8px;color:var(--muted);font-size:1.02rem}
   .scene-inner p{margin-bottom:14px}
+  .scene-inner>p:first-of-type::first-letter{font-family:var(--font-display),sans-serif;
+    float:left;font-size:2.9em;line-height:.82;font-weight:800;margin:6px 11px 0 0;color:var(--accent)}
   .scene-inner strong{color:var(--ink);font-weight:600}
   .scene-inner .mint{color:var(--accent);font-weight:500}
 
@@ -308,6 +319,7 @@
 </style>
 </head>
 <body>
+<div class="noise-overlay"></div>
 <div class="progress" id="progress"></div>
 
 <nav class="bar"><div class="wrap">
