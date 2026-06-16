@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="One-Click Escritório IA — o motor de IA do seu escritório: gera procuração e contrato de honorários com o seu logo, sua fonte e seu espaçamento em 2 cliques, mais 5 agentes prontos para o Claude.ai. 100% local, sob a LGPD.">
+<meta property="og:title" content="One-Click Escritório IA — Mentor Descomplicado">
+<meta property="og:description" content="Procuração e contrato com a SUA identidade em 2 cliques + 5 agentes de IA prontos. Roda na sua máquina, sem dado de cliente saindo de lugar nenhum.">
+<meta property="og:type" content="website">
+<title>One-Click Escritório IA — Mentor Descomplicado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e16; --bg2:#0e1320; --surface:#141a28; --surface2:#1b2332;
+    --ink:#eef2f7; --muted:#9aa6b8; --faint:#5d6678; --line:rgba(52,224,161,.14);
+    --accent:#34e0a1; --accent-dim:#27b885; --accent2:#ff7a59; --accent2-dim:#e8633f;
+    --accent3:#6aa3ff; --on-accent:#06120c; --on-accent2:#ffffff;
+    --accent-soft:rgba(52,224,161,.35); --accent-wash:rgba(52,224,161,.05);
+    --glow1:rgba(52,224,161,.10); --glow2:rgba(255,122,89,.07);
+    --nav-bg:rgba(10,14,22,.85); --code-ink:#cdebd9;
+    --font-display:'Bricolage Grotesque'; --font-body:'Hanken Grotesk'; --font-mono:'JetBrains Mono';
+    --body-weight:350; --r:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:var(--font-body),sans-serif; line-height:1.65; font-weight:var(--body-weight,350);
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+    background-image:
+      radial-gradient(900px 600px at 88% -8%, var(--glow1), transparent 58%),
+      radial-gradient(700px 500px at -5% 25%, var(--glow2), transparent 55%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 26px}
+  ::selection{background:var(--accent);color:var(--on-accent)}
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .1s linear}
+  nav.bar{position:sticky;top:0;z-index:50;background:var(--nav-bg);
+    backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  nav.bar .wrap{display:flex;align-items:center;gap:8px;padding:13px 26px}
+  .logo{font-family:var(--font-display),sans-serif;font-weight:700;font-size:1rem;
+    letter-spacing:-.02em;color:var(--ink);margin-right:auto;display:flex;align-items:center;gap:9px}
+  .logo .mark{min-width:26px;height:26px;border-radius:7px;padding:0 9px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-dim));
+    display:grid;place-items:center;color:var(--on-accent);font-weight:800;font-size:.9rem;letter-spacing:.04em}
+  .logo b{color:var(--accent)}
+  nav.bar a.link{text-decoration:none;color:var(--muted);font-size:.82rem;padding:7px 13px;
+    border-radius:999px;transition:.25s;font-weight:500;white-space:nowrap}
+  nav.bar a.link:hover{color:var(--ink);background:var(--surface)}
+  nav.bar .cta{background:var(--accent);color:var(--on-accent);font-weight:700;font-size:.82rem;
+    padding:8px 16px;border-radius:999px;text-decoration:none;transition:.25s}
+  nav.bar .cta:hover{background:var(--accent2);color:var(--on-accent2)}
+  @media(max-width:880px){nav.bar a.link{display:none}}
+  header.hero{padding:88px 0 56px;position:relative}
+  .kicker{font-family:var(--font-mono),monospace;font-size:.72rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--accent);opacity:0;animation:rise .8s .1s forwards;
+    display:inline-flex;align-items:center;gap:10px}
+  .kicker::before{content:"";width:26px;height:1px;background:var(--accent)}
+  h1.title{font-family:var(--font-display),sans-serif;font-weight:700;
+    font-size:clamp(2.5rem,6.5vw,4.7rem);line-height:1.02;letter-spacing:-.025em;
+    margin:.35em 0 .3em;opacity:0;animation:rise .9s .22s forwards}
+  h1.title em{font-style:normal;color:var(--accent)}
+  h1.title .c{color:var(--accent2)}
+  .lede{font-size:1.15rem;color:var(--muted);max-width:620px;
+    opacity:0;animation:rise .9s .36s forwards}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;
+    opacity:0;animation:rise .9s .46s forwards}
+  .badge{font-family:var(--font-mono),monospace;font-size:.72rem;color:var(--muted);
+    background:var(--surface);border:1px solid var(--line);padding:6px 13px;border-radius:999px}
+  .badge b{color:var(--accent)}
+  .hero-cta{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;
+    opacity:0;animation:rise .9s .54s forwards}
+  .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--on-accent);
+    font-weight:700;padding:15px 30px;border-radius:999px;text-decoration:none;font-size:1.02rem;transition:.3s}
+  .btn-primary:hover{background:var(--accent2);color:var(--on-accent2);transform:translateY(-2px)}
+  .btn-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--muted);text-decoration:none;
+    font-size:.9rem;font-weight:500;padding:14px 6px;transition:.25s}
+  .btn-ghost:hover{color:var(--ink)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px;
+    opacity:0;animation:rise .9s .62s forwards}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:20px 18px;text-align:center;position:relative;overflow:hidden}
+  .stat .n{font-family:var(--font-display),sans-serif;font-weight:700;font-size:2rem;
+    color:var(--ink);line-height:1}
+  .stat .n.c{color:var(--accent)}
+  .stat .l{font-family:var(--font-mono),monospace;font-size:.62rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--faint);margin-top:6px}
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .section{padding:30px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-family:var(--font-mono),monospace;font-size:.68rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:flex;gap:12px;align-items:center}
+  .eyebrow .t{color:var(--faint)}
+  h2.h{font-family:var(--font-display),sans-serif;font-weight:600;
+    font-size:clamp(1.6rem,3.4vw,2.3rem);line-height:1.12;letter-spacing:-.018em;margin-bottom:14px}
+  h2.h em{font-style:normal;color:var(--accent)}
+  .lead-p{color:var(--muted);font-size:1.05rem;max-width:680px;margin-bottom:8px}
+  .lead-p strong{color:var(--ink);font-weight:600}
+  .pull{font-family:var(--font-display),sans-serif;font-style:italic;font-size:1.35rem;
+    color:var(--ink);border-left:3px solid var(--accent);padding:8px 0 8px 22px;margin:24px 0;line-height:1.35}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;transition:.3s}
+  .panel:hover{transform:translateY(-3px);border-color:var(--accent-soft)}
+  .panel .tag{font-family:var(--font-mono),monospace;font-size:.66rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent)}
+  .panel.no .tag{color:var(--accent2)}
+  .panel h4{font-family:var(--font-display),sans-serif;font-size:1.25rem;font-weight:600;margin:6px 0 10px;color:var(--ink)}
+  .panel ul{list-style:none}
+  .panel li{padding:6px 0 6px 22px;position:relative;font-size:.94rem;color:var(--ink)}
+  .panel li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:600}
+  .panel.no li::before{content:"✕";color:var(--accent2)}
+  @media(max-width:680px){.split{grid-template-columns:1fr}}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;position:relative}
+  .step .sn{font-family:var(--font-display),sans-serif;font-weight:800;font-size:2.6rem;color:var(--surface2);
+    -webkit-text-stroke:1px var(--accent);line-height:.9;margin-bottom:12px}
+  .step h4{font-family:var(--font-display),sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:6px}
+  .step p{font-size:.9rem;color:var(--muted)}
+  @media(max-width:680px){.steps{grid-template-columns:1fr}}
+  .sys-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+  .sys{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;position:relative;overflow:hidden;transition:.3s}
+  .sys::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--c,var(--accent))}
+  .sys:hover{transform:translateY(-4px)}
+  .sys[data-s="a"]{--c:var(--accent3)} .sys[data-s="b"]{--c:var(--accent2)} .sys[data-s="c"]{--c:var(--accent)}
+  .sys .cat{font-family:var(--font-mono),monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--c,var(--accent));background:color-mix(in srgb,var(--c,var(--accent)) 14%,transparent);padding:4px 10px;border-radius:999px;display:inline-block}
+  .sys h4{font-family:var(--font-display),sans-serif;font-size:1.35rem;font-weight:600;margin:14px 0 6px}
+  .sys p{font-size:.9rem;color:var(--muted)}
+  .sys ul{list-style:none;margin-top:10px}
+  .sys li{padding:4px 0 4px 18px;position:relative;font-size:.85rem;color:var(--ink)}
+  .sys li::before{content:"›";position:absolute;left:0;color:var(--c,var(--accent));font-weight:700}
+  @media(max-width:680px){.sys-grid{grid-template-columns:1fr}}
+  .note{display:grid;grid-template-columns:auto 1fr;gap:16px;background:var(--surface);
+    border:1px solid var(--line);border-radius:14px;padding:22px 26px;border-left:4px solid var(--accent2);margin:20px 0}
+  .note .ic{font-size:1.4rem}
+  .note h4{font-family:var(--font-display),sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:4px;color:var(--ink)}
+  .note p{color:var(--muted);font-size:.92rem}
+  .diag{background:linear-gradient(160deg,var(--surface2),var(--surface));
+    border:1px solid var(--line);border-radius:22px;padding:38px;margin:30px 0;position:relative;overflow:hidden}
+  .diag::before{content:"";position:absolute;width:320px;height:320px;border-radius:50%;
+    background:var(--accent);filter:blur(140px);opacity:.07;top:-120px;right:-80px}
+  .diag .dhead{font-family:var(--font-mono),monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .diag h3{font-family:var(--font-display),sans-serif;font-size:1.7rem;font-weight:600;margin-bottom:6px}
+  .diag .dsub{color:var(--muted);font-size:.95rem;margin-bottom:24px}
+  .diag-q{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--bg2);
+    border:1px solid var(--line);border-radius:12px;margin-bottom:10px;cursor:pointer;transition:.25s}
+  .diag-q:hover{border-color:var(--accent)}
+  .diag-q.on{border-color:var(--accent);background:var(--accent-wash)}
+  .diag-check{width:24px;height:24px;border-radius:7px;border:1.5px solid var(--faint);flex-shrink:0;
+    display:grid;place-items:center;transition:.25s;color:transparent;font-weight:700;font-size:.9rem}
+  .diag-q.on .diag-check{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  .diag-q span{font-size:.95rem;color:var(--ink)}
+  .diag-result{margin-top:24px;padding:24px;border-radius:16px;background:var(--bg2);
+    border:1px solid var(--line);display:flex;gap:20px;align-items:center}
+  .diag-score{font-family:var(--font-display),sans-serif;font-weight:800;font-size:3rem;
+    color:var(--accent);line-height:1;flex-shrink:0}
+  .diag-verdict b{color:var(--ink);font-family:var(--font-display),sans-serif;font-size:1.2rem;display:block;margin-bottom:4px}
+  .diag-verdict p{color:var(--muted);font-size:.9rem}
+  .offer{background:linear-gradient(160deg,var(--surface2),var(--surface));border:1px solid var(--accent-soft);
+    border-radius:24px;padding:42px;margin:32px 0;position:relative;overflow:hidden}
+  .offer::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;
+    background:var(--accent);filter:blur(150px);opacity:.08;top:-130px;right:-70px}
+  .offer .ohead{font-family:var(--font-mono),monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .offer h3{font-family:var(--font-display),sans-serif;font-size:1.9rem;font-weight:700;margin-bottom:8px;line-height:1.1}
+  .offer .osub{color:var(--muted);max-width:600px;margin-bottom:24px}
+  .offer .incl{list-style:none;display:grid;gap:10px;margin-bottom:28px}
+  .offer .incl li{padding:8px 0 8px 30px;position:relative;color:var(--ink);font-size:.98rem}
+  .offer .incl li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:800;
+    background:var(--accent-wash);width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-size:.8rem;top:6px}
+  .offer .incl li b{color:var(--accent)}
+  .offer .seal{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono),monospace;font-size:.72rem;
+    color:var(--muted);margin-top:18px}
+  .scene{padding:8px 0;border-top:1px solid var(--line)}
+  .scene-head{display:flex;gap:18px;align-items:flex-start;cursor:pointer;user-select:none;padding:16px 0}
+  .scene-head .htext{flex:1}
+  .scene-q{font-family:var(--font-display),sans-serif;font-weight:600;font-size:1.12rem;line-height:1.3}
+  .scene-toggle{flex-shrink:0;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);
+    display:grid;place-items:center;color:var(--accent);font-size:1.1rem;transition:.3s}
+  .scene.open .scene-toggle{transform:rotate(45deg);background:var(--accent);color:var(--on-accent)}
+  .scene-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
+  .scene.open .scene-body{max-height:600px}
+  .scene-inner{padding:0 0 20px;color:var(--muted);font-size:.98rem}
+  .scene-inner strong{color:var(--ink);font-weight:600}
+  .finalcta{text-align:center;padding:60px 0 20px}
+  .finalcta h2{font-family:var(--font-display),sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;line-height:1.1;margin-bottom:14px}
+  .finalcta h2 em{font-style:normal;color:var(--accent)}
+  .finalcta p{color:var(--muted);max-width:520px;margin:0 auto 28px}
+  .reveal{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .author{margin:60px 0 0;background:linear-gradient(160deg,var(--surface2),var(--surface));
+    border:1px solid var(--line);border-radius:24px;padding:42px;position:relative;overflow:hidden}
+  .author::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;
+    background:var(--accent2);filter:blur(150px);opacity:.08;bottom:-120px;left:-60px}
+  .author .ahead{font-family:var(--font-mono),monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .author h3{font-family:var(--font-display),sans-serif;font-size:2rem;font-weight:700;margin-bottom:8px}
+  .author .role{color:var(--accent);font-size:.95rem;margin-bottom:16px;font-weight:500}
+  .author p{color:var(--muted);max-width:600px;margin-bottom:22px}
+  .author .creds{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;margin:22px 0 26px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .author .creds .ct{grid-column:1/-1;font-family:var(--font-mono),monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  .author .creds li{list-style:none;padding:5px 0 5px 18px;position:relative;font-size:.9rem;color:var(--ink)}
+  .author .creds li::before{content:"›";position:absolute;left:0;color:var(--accent);font-weight:600}
+  .author .acta{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--on-accent);
+    font-weight:700;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:1rem;transition:.3s}
+  .author .acta:hover{background:var(--accent2);color:var(--on-accent2);transform:translateY(-2px)}
+  .author .social{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .author .social a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    background:var(--surface);border:1px solid var(--line);color:var(--muted);
+    padding:9px 16px;border-radius:999px;font-size:.82rem;font-weight:500;transition:.25s}
+  .author .social a:hover{border-color:var(--accent);color:var(--ink);transform:translateY(-2px)}
+  @media(max-width:680px){.author .creds{grid-template-columns:1fr}}
+  footer{padding:40px 0 70px;text-align:center;border-top:1px solid var(--line);margin-top:50px}
+  footer .fl{font-family:var(--font-mono),monospace;font-size:.72rem;color:var(--faint);letter-spacing:.08em;line-height:2}
+  footer .fl a{color:var(--accent);text-decoration:none}
+  .disclaimer{max-width:680px;margin:18px auto 0;font-size:.76rem;color:var(--faint);line-height:1.6}
+  @media(max-width:680px){.diag,.offer,.author{padding:26px}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav class="bar"><div class="wrap">
+  <span class="logo"><span class="mark">M</span>Mentor <b>Descomplicado</b></span>
+  <a class="link" href="#oque">O que é</a>
+  <a class="link" href="#como">Como funciona</a>
+  <a class="link" href="#dentro">O que vem</a>
+  <a class="link" href="#para-quem">Para quem é</a>
+  <a class="cta" href="https://wa.me/5518981534008?text=Quero%20entrar%20na%20lista%20de%20lan%C3%A7amento%20do%20One-Click%20Escrit%C3%B3rio%20IA" target="_blank" rel="noopener">Entrar na lista</a>
+</div></nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero" id="topo">
+    <span class="kicker">Produto Farias Tech · Mentor Descomplicado</span>
+    <h1 class="title">O motor de IA<br>do <em>seu</em> escritório.<br>Em <span class="c">2 cliques.</span></h1>
+    <p class="lede">Procuração e contrato de honorários saindo prontos — com o <strong>seu logo</strong>, a <strong>sua fonte</strong> e o <strong>seu espaçamento</strong>. Mais 5 agentes de IA prontos para usar no Claude.ai. Tudo na sua máquina, sem nenhum dado de cliente saindo de lugar nenhum.</p>
+    <div class="badges">
+      <span class="badge"><b>100%</b> local</span>
+      <span class="badge"><b>LGPD</b> por design</span>
+      <span class="badge"><b>5</b> agentes prontos</span>
+      <span class="badge">sem mensalidade de plataforma</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn-primary" href="https://wa.me/5518981534008?text=Quero%20entrar%20na%20lista%20de%20lan%C3%A7amento%20do%20One-Click%20Escrit%C3%B3rio%20IA" target="_blank" rel="noopener">Entrar na lista de lançamento →</a>
+      <a class="btn-ghost" href="#como">ver como funciona</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n c">2</div><div class="l">cliques por documento</div></div>
+      <div class="stat"><div class="n">1×</div><div class="l">configura, usa sempre</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">dado saindo da máquina</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">agentes de IA inclusos</div></div>
+    </div>
+  </header>
+
+  <!-- PROBLEMA -->
+  <section class="section reveal" id="problema">
+    <div class="eyebrow">O dreno invisível <span class="t">· onde o tempo escorre</span></div>
+    <h2 class="h">A parte chata da advocacia não é a tese.<br>É <em>formatar a procuração de novo.</em></h2>
+    <p class="lead-p">Todo dia o mesmo ritual: abrir um modelo antigo, trocar o nome, conferir a qualificação, ajustar o espaçamento que desconfigurou, colar o cabeçalho, salvar com o nome certo na pasta certa. Multiplica por cada cliente novo, cada contrato, cada procuração. <strong>É hora de trabalho que não vira honorário.</strong></p>
+    <div class="pull">O advogado não foi formado para ser diagramador. Mas é o que ele vira toda vez que precisa de um documento básico no padrão da casa.</div>
+    <p class="lead-p">E quando a saída é uma “IA na nuvem”, vem o outro problema: <strong>dado de cliente trafegando para fora</strong> — sigilo profissional, Provimento 205/2021 e LGPD batendo na porta.</p>
+  </section>
+
+  <!-- O QUE É -->
+  <section class="section reveal" id="oque">
+    <div class="eyebrow">A virada <span class="t">· o que é o produto</span></div>
+    <h2 class="h">One-Click Escritório IA:<br>a sua identidade vira <em>um motor.</em></h2>
+    <p class="lead-p">Você configura o escritório <strong>uma vez</strong> — logo, fonte, dados, padrão de pastas. A partir daí, gerar uma procuração ou um contrato de honorários no padrão profissional vira questão de <strong>dois cliques</strong>. O documento já sai com a sua cara, pronto para assinar, salvo no lugar certo.</p>
+    <p class="lead-p">Não é mais um “site de IA”. É um <strong>programa que roda na sua máquina</strong> — o dado do cliente nasce e morre aí dentro. E vem acompanhado de <strong>5 agentes de IA</strong> prontos para colar no seu Claude.ai e trabalhar do seu lado.</p>
+    <div class="note">
+      <div class="ic">🔒</div>
+      <div>
+        <h4>Local não é detalhe técnico — é blindagem ética.</h4>
+        <p>Rodando offline, na sua máquina, você cumpre o sigilo profissional e a LGPD sem depender da política de privacidade de ninguém. O que é do cliente continua sendo só seu.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section reveal" id="como">
+    <div class="eyebrow">Como funciona <span class="t">· três passos, uma vez só</span></div>
+    <h2 class="h">Configura uma vez. <em>Usa para sempre.</em></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="sn">1</div>
+        <h4>Configure seu escritório</h4>
+        <p>Na primeira tela você coloca o logo, escolhe a fonte e preenche os dados. O sistema guarda como o seu padrão visual — só você, na sua máquina.</p>
+      </div>
+      <div class="step">
+        <div class="sn">2</div>
+        <h4>Preencha e clique</h4>
+        <p>Dados do cliente e do caso em um formulário simples. Um clique e o documento sai formatado, no padrão da casa, em <b>.docx</b> pronto para revisar e assinar.</p>
+      </div>
+      <div class="step">
+        <div class="sn">3</div>
+        <h4>Acione os agentes</h4>
+        <p>Cole os 5 agentes no seu Claude.ai e tenha triagem, redação para o cliente, civil, trabalhista e cálculo de prazos respondendo do seu jeito.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE VEM DENTRO -->
+  <section class="section reveal" id="dentro">
+    <div class="eyebrow">O que vem dentro <span class="t">· o pacote completo</span></div>
+    <h2 class="h">Três peças que conversam entre si.</h2>
+    <div class="sys-grid">
+      <div class="sys" data-s="c">
+        <span class="cat">O motor</span>
+        <h4>Gerador One-Click</h4>
+        <p>Programa que roda local e gera os documentos com a sua identidade.</p>
+        <ul>
+          <li>Procuração Ad Judicia et Extra</li>
+          <li>Contrato de honorários (13 cláusulas)</li>
+          <li>Seu logo + sua fonte + seu espaçamento</li>
+          <li>Salva no padrão de pastas automaticamente</li>
+        </ul>
+      </div>
+      <div class="sys" data-s="b">
+        <span class="cat">A inteligência</span>
+        <h4>5 Agentes de IA</h4>
+        <p>Prontos para o Claude.ai, com instalação guiada passo a passo.</p>
+        <ul>
+          <li>Triagem de caso</li>
+          <li>Redator para o cliente</li>
+          <li>Civil &amp; Trabalhista</li>
+          <li>Redator de contratos</li>
+          <li>Calculador de prazos</li>
+        </ul>
+      </div>
+      <div class="sys" data-s="a">
+        <span class="cat">A organização</span>
+        <h4>Estrutura pronta</h4>
+        <p>O esqueleto de pastas e o guia para começar sem montar nada do zero.</p>
+        <ul>
+          <li>Pastas de casos e modelos</li>
+          <li>Guia de instalação no Claude.ai</li>
+          <li>Modo portátil (.exe), sem instalar Python</li>
+          <li>Funciona offline, em qualquer Windows</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAL VISUAL -->
+  <section class="section reveal">
+    <div class="eyebrow">O detalhe que muda tudo <span class="t">· identidade visual</span></div>
+    <h2 class="h">O documento sai com <em>a sua cara</em> — não com a minha.</h2>
+    <p class="lead-p">A maioria dos geradores cospe um modelo genérico que grita “foi feito no automático”. Aqui é o contrário: o sistema aprende a identidade do <strong>seu</strong> escritório uma vez e aplica em tudo. Logo no cabeçalho, a fonte da sua marca, o espaçamento que você usa. O cliente recebe um documento que parece — porque é — <strong>seu</strong>.</p>
+  </section>
+
+  <!-- DIAGNOSTICO -->
+  <section class="section reveal">
+    <div class="eyebrow">Antes de tudo <span class="t">· isto é para você?</span></div>
+    <div class="diag" id="diag" data-verdicts='[{"max":1,"b":"Talvez ainda não seja a sua dor","p":"Se quase nada acima te incomoda, seu fluxo já está azeitado. Guarde o link para quando o volume crescer."},{"max":3,"b":"Você sente o atrito","p":"Dá para viver com isso — mas é exatamente o tipo de tempo que o One-Click devolve para você focar no que vira honorário."},{"max":10,"b":"Isto foi feito para o seu escritório","p":"Cada item marcado é uma hora por semana que você está doando para a burocracia. Entre na lista de lançamento."}]'>
+      <div class="dhead">Diagnóstico rápido · 30 segundos</div>
+      <h3>Marque o que acontece no seu dia</h3>
+      <p class="dsub">Sem cadastro, sem nada saindo da sua tela. Só um retrato honesto.</p>
+      <div class="diag-q" onclick="toggleDiag(this)"><span class="diag-check">✓</span><span>Perco tempo reformatando procuração e contrato toda semana</span></div>
+      <div class="diag-q" onclick="toggleDiag(this)"><span class="diag-check">✓</span><span>Meus documentos não têm um padrão visual consistente</span></div>
+      <div class="diag-q" onclick="toggleDiag(this)"><span class="diag-check">✓</span><span>Tenho receio de jogar dado de cliente em IA na nuvem</span></div>
+      <div class="diag-q" onclick="toggleDiag(this)"><span class="diag-check">✓</span><span>Queria usar IA no escritório mas não sei por onde começar</span></div>
+      <div class="diag-q" onclick="toggleDiag(this)"><span class="diag-check">✓</span><span>Atendo sozinho ou com equipe pequena e o operacional me engole</span></div>
+      <div class="diag-result">
+        <div class="diag-score">0/5</div>
+        <div class="diag-verdict"><b>Marque acima para ver o resultado</b><p>O diagnóstico aparece aqui conforme você marca.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM -->
+  <section class="section reveal" id="para-quem">
+    <div class="eyebrow">Para quem é <span class="t">· e para quem não é</span></div>
+    <h2 class="h">Honestidade antes da venda.</h2>
+    <div class="split">
+      <div class="panel">
+        <span class="tag">É para você se…</span>
+        <h4>Faz sentido</h4>
+        <ul>
+          <li>Advoga sozinho ou em equipe enxuta</li>
+          <li>Quer profissionalizar a aparência dos documentos</li>
+          <li>Leva sigilo e LGPD a sério</li>
+          <li>Quer dar o primeiro passo em IA sem complicação</li>
+          <li>Usa Windows e quer algo que “só funcione”</li>
+        </ul>
+      </div>
+      <div class="panel no">
+        <span class="tag">Não é para você se…</span>
+        <h4>Melhor passar</h4>
+        <ul>
+          <li>Procura uma “IA que ganha causa sozinha”</li>
+          <li>Quer terceirizar o juízo técnico para a máquina</li>
+          <li>Não pretende configurar nada, nem uma vez</li>
+          <li>Espera substituir o advogado pela tecnologia</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA / LISTA -->
+  <section class="section reveal" id="lista">
+    <div class="offer">
+      <div class="ohead">Lançamento · acesso antecipado</div>
+      <h3>A lista de lançamento abre as portas primeiro.</h3>
+      <p class="osub">O One-Click Escritório IA está em fase final de preparação. Quem entra na lista recebe a série gratuita de mini-aulas, vê o produto antes de todo mundo e garante as condições de lançamento.</p>
+      <ul class="incl">
+        <li><b>Acesso antecipado</b> ao produto, antes da abertura geral</li>
+        <li>A <b>série gratuita</b> de 4 mini-aulas “Escritório IA na prática”</li>
+        <li>As <b>condições especiais</b> reservadas para a turma de lançamento</li>
+        <li>Canal direto comigo no WhatsApp para tirar dúvidas</li>
+      </ul>
+      <a class="btn-primary" href="https://wa.me/5518981534008?text=Quero%20entrar%20na%20lista%20de%20lan%C3%A7amento%20do%20One-Click%20Escrit%C3%B3rio%20IA" target="_blank" rel="noopener">Quero entrar na lista →</a>
+      <div class="seal">⚖️ Ferramenta de produtividade · não substitui o juízo técnico do advogado</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section reveal" id="faq">
+    <div class="eyebrow">Perguntas honestas <span class="t">· FAQ</span></div>
+    <h2 class="h">O que costumam me perguntar.</h2>
+    <div class="scene"><div class="scene-head" onclick="toggleScene(this)">
+      <div class="htext"><div class="scene-q">Preciso saber programar?</div></div>
+      <div class="scene-toggle">+</div></div>
+      <div class="scene-body"><div class="scene-inner">Não. O gerador abre como qualquer programa e tem uma tela de configuração. Os agentes vêm com um guia de instalação no Claude.ai passo a passo. Se você usa Word e WhatsApp, dá conta.</div></div>
+    </div>
+    <div class="scene"><div class="scene-head" onclick="toggleScene(this)">
+      <div class="htext"><div class="scene-q">Meus dados de cliente vão para algum servidor?</div></div>
+      <div class="scene-toggle">+</div></div>
+      <div class="scene-body"><div class="scene-inner">O gerador roda <strong>na sua máquina</strong>. Os documentos e os dados ficam só no seu computador. Essa é a premissa do produto — sigilo e LGPD por design.</div></div>
+    </div>
+    <div class="scene"><div class="scene-head" onclick="toggleScene(this)">
+      <div class="htext"><div class="scene-q">Funciona no meu computador?</div></div>
+      <div class="scene-toggle">+</div></div>
+      <div class="scene-body"><div class="scene-inner">Sim, em qualquer Windows — há um modo portátil (.exe) que dispensa instalar Python ou qualquer coisa técnica. Você descompacta e usa.</div></div>
+    </div>
+    <div class="scene"><div class="scene-head" onclick="toggleScene(this)">
+      <div class="htext"><div class="scene-q">A IA vai escrever minhas peças no lugar do advogado?</div></div>
+      <div class="scene-toggle">+</div></div>
+      <div class="scene-body"><div class="scene-inner">Não, e nem deve. Isto é uma ferramenta para tirar o trabalho repetitivo do caminho e acelerar rascunhos. O juízo técnico, a estratégia e a responsabilidade continuam sendo do advogado — como manda a ética da profissão.</div></div>
+    </div>
+    <div class="scene"><div class="scene-head" onclick="toggleScene(this)">
+      <div class="htext"><div class="scene-q">Como entro na lista?</div></div>
+      <div class="scene-toggle">+</div></div>
+      <div class="scene-body"><div class="scene-inner">Pelo botão de WhatsApp em qualquer lugar desta página. Você me manda uma mensagem, entra na turma de lançamento e já recebe a primeira mini-aula gratuita.</div></div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="finalcta reveal">
+    <h2>Pare de diagramar.<br><em>Volte a advogar.</em></h2>
+    <p>Entre na lista de lançamento, receba a série gratuita e seja o primeiro a colocar o motor para rodar no seu escritório.</p>
+    <a class="btn-primary" href="https://wa.me/5518981534008?text=Quero%20entrar%20na%20lista%20de%20lan%C3%A7amento%20do%20One-Click%20Escrit%C3%B3rio%20IA" target="_blank" rel="noopener">Entrar na lista de lançamento →</a>
+  </section>
+
+  <!-- AUTHOR -->
+  <div class="author reveal" id="falar">
+    <div class="ahead">Quem descomplica</div>
+    <h3>Alex Candido Farias</h3>
+    <div class="role">Advogado, empresário e mentor em IA aplicada ao Direito</div>
+    <p>Com mais de uma década de atuação, o trabalho integra metodologia jurídica tradicional e inteligência artificial proprietária — não para substituir o advogado pela tecnologia, mas para potencializar o trabalho jurídico com velocidade, precisão e insights baseados em dados. Tudo sob o Filtro CVR — Clareza · Valor · Risco.</p>
+    <div class="creds">
+      <div class="ct">Formação</div>
+      <li>Bacharel em Direito — Reges de Dracena</li>
+      <li>MBA em Gestão Pública — Unopar</li>
+      <li>MBA em Inteligência Artificial para Negócios — Anhanguera</li>
+      <li>Especialização em Direito Digital e Proteção de Dados — PUC-SP</li>
+      <li>Especialização em Direito do Seguro e Resseguro — FGV</li>
+      <li>Secretário de Desenvolvimento e Tecnologia da CAD-OAB/SP</li>
+    </div>
+    <a class="acta" href="https://wa.me/5518981534008?text=Quero%20entrar%20na%20lista%20de%20lan%C3%A7amento%20do%20One-Click%20Escrit%C3%B3rio%20IA" target="_blank" rel="noopener">Quero implementar no meu escritório →</a>
+    <div class="social">
+      <a href="https://wa.me/5518981534008" target="_blank" rel="noopener">WhatsApp · (18) 98153-4008</a>
+      <a href="https://www.instagram.com/alexfariasaf/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/alexfariasadvogado" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://alexfarias.com/" target="_blank" rel="noopener">Site oficial</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="fl">
+      MENTOR DESCOMPLICADO · IA DESCOMPLICADA PARA O DIREITO<br>Conteúdo educacional · As ferramentas evoluem rápido
+    </div>
+    <p class="disclaimer">Conteúdo educacional sobre tecnologia e inteligência artificial aplicada ao Direito. Não constitui consultoria jurídica, captação de clientela nem promessa de resultado. O One-Click Escritório IA é uma ferramenta de produtividade e não substitui o juízo técnico nem a responsabilidade profissional do advogado. Nomes de produtos e modelos pertencem aos respectivos fabricantes. Antes de usar IA com dados de clientes, observe o sigilo profissional, o Provimento 205/2021 da OAB e a LGPD.</p>
+  </footer>
+
+</div>
+
+<script>
+  const prog=document.getElementById('progress');
+  window.addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const sc=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    prog.style.width=sc+'%';
+  });
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  function toggleScene(el){el.parentElement.classList.toggle('open');}
+  function toggleDiag(el){
+    el.classList.toggle('on');
+    const root=el.closest('.diag');
+    const total=root.querySelectorAll('.diag-q').length;
+    const on=root.querySelectorAll('.diag-q.on').length;
+    root.querySelector('.diag-score').textContent=on+'/'+total;
+    const v=root.querySelector('.diag-verdict');
+    let verdicts=[];
+    try{verdicts=JSON.parse(root.getAttribute('data-verdicts')||'[]');}catch(e){}
+    if(verdicts.length){
+      const band=verdicts.find(x=>on<=x.max)||verdicts[verdicts.length-1];
+      if(band){v.innerHTML='<b>'+band.b+'</b><p>'+band.p+'</p>';}
+    }
+  }
+</script>
+</body>
+</html>
