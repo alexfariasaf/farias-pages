@@ -6,3 +6,7 @@ _teste*
 _source/
 .DS_Store
 Thumbs.db
+
+# Lixo do Google Drive (pasta sincronizada)
+desktop.ini
+Desktop.ini
