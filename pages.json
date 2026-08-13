@@ -41,6 +41,14 @@
       "brand": "md",
       "summary": "Série gratuita de 4 mini-aulas — comece a usar IA no seu escritório. Entra pelo WhatsApp e recebe a primeira hoje.",
       "managed": false
+    },
+    {
+      "slug": "portfolio-afaa",
+      "title": "Portfólio Institucional — Áreas de Atuação e Método",
+      "description": "Documento institucional do escritório Alex Farias & Advogados Associados: áreas de atuação, método de trabalho em seis etapas e compromissos de atendimento. OAB/SP 381.442.",
+      "brand": "afaa",
+      "summary": "Como o escritório conduz um caso, do diagnóstico ao encerramento, e em quais áreas atua — para pessoas físicas e empresas.",
+      "managed": false
     }
   ]
 }
