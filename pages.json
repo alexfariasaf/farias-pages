@@ -49,6 +49,14 @@
       "brand": "afaa",
       "summary": "Como o escritório conduz um caso, do diagnóstico ao encerramento, e em quais áreas atua — para pessoas físicas e empresas.",
       "managed": false
+    },
+    {
+      "slug": "portfolio-assessoria-afaa",
+      "title": "Assessoria Jurídica Empresarial — Escopo, Níveis e Prazos",
+      "description": "Assessoria jurídica preventiva e recorrente para empresas: o que está incluso na avença mensal, o que é contratado à parte, os três níveis de contratação e os prazos de resposta acordados. Alex Farias & Advogados Associados — OAB/SP 381.442.",
+      "brand": "afaa",
+      "summary": "O que a avença mensal cobre, o que fica de fora, os três níveis de contratação e os prazos que entram no contrato.",
+      "managed": false
     }
   ]
 }

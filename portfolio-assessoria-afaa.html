@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assessoria Jurídica Empresarial — Alex Farias &amp; Advogados Associados</title>
+<meta name="description" content="Assessoria jurídica preventiva e recorrente para empresas. Escopo definido, prazos de resposta acordados e acompanhamento contínuo.">
+<style>
+  :root{
+    --azul:#1B3A5C; --azul-nevoa:#2E5680; --dourado:#C9A84C; --dourado-claro:#D9BB6C;
+    --grafite:#2C2C2C; --cinza:#5A6572; --cinza-nevoa:#F4F2ED; --linha:#E3E0D8; --branco:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:Calibri,"Segoe UI",system-ui,sans-serif;color:var(--grafite);
+       background:var(--branco);line-height:1.62;font-size:16.5px}
+  .env{max-width:940px;margin:0 auto;padding:0 28px}
+  h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif}
+  a{color:var(--azul)}
+
+  /* ---------- capa ---------- */
+  .capa{background:var(--azul);color:#EEF2F6;padding:74px 0 62px;position:relative}
+  .capa::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--dourado)}
+  .capa img{height:74px;width:auto;display:block;margin-bottom:38px}
+  .capa .oab{font-size:12.5px;letter-spacing:.2em;color:var(--dourado-claro);font-weight:700;
+             text-transform:uppercase;margin-bottom:16px}
+  .capa h1{font-size:40px;line-height:1.18;color:#fff;font-weight:700;max-width:22ch}
+  .capa .lead{margin-top:20px;font-size:18px;max-width:60ch;color:#D8E0E9}
+  .capa .selo{margin-top:34px;padding-top:18px;border-top:1px solid rgba(217,187,108,.35);
+              font-size:13.5px;color:#B9C6D4;letter-spacing:.04em}
+
+  /* ---------- seções ---------- */
+  section{padding:52px 0}
+  section + section{border-top:1px solid var(--linha)}
+  .rotulo{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dourado);
+          font-weight:700;margin-bottom:10px}
+  h2{font-size:27px;color:var(--azul);line-height:1.25;margin-bottom:8px}
+  h2 + .sub{color:var(--cinza);font-size:16.5px;max-width:66ch;margin-bottom:26px}
+  h3{font-size:18px;color:var(--azul);margin-bottom:6px}
+  p{margin-bottom:14px;max-width:72ch}
+  p:last-child{margin-bottom:0}
+
+  /* ---------- escopo incluso / apartado ---------- */
+  .escopo{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:8px}
+  .col-escopo{border:1px solid var(--linha);border-top:4px solid var(--dourado);
+              padding:24px 22px;background:var(--cinza-nevoa)}
+  .col-escopo.fora{border-top-color:var(--azul-nevoa);background:#fff}
+  .col-escopo h3{margin-bottom:12px}
+  .col-escopo .item{padding:11px 0;border-bottom:1px solid var(--linha)}
+  .col-escopo .item:last-child{border-bottom:0}
+  .col-escopo .item strong{display:block;color:var(--grafite);font-size:15.6px;margin-bottom:2px}
+  .col-escopo .item span{font-size:14.6px;color:var(--cinza)}
+
+  /* ---------- níveis ---------- */
+  .niveis{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--linha);
+          border:1px solid var(--linha);margin-top:8px}
+  .nivel{background:#fff;padding:24px 22px;display:flex;flex-direction:column;gap:10px}
+  .nivel .faixa{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;
+                color:var(--dourado)}
+  .nivel h3{font-size:19px;margin:0}
+  .nivel .resumo{font-size:15px;color:var(--cinza);margin:0}
+  .nivel ul{list-style:none;margin-top:4px}
+  .nivel li{position:relative;padding-left:17px;margin-bottom:7px;font-size:14.8px;color:#3D4550}
+  .nivel li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;
+                    background:var(--dourado);border-radius:50%}
+
+  /* ---------- prazos ---------- */
+  table{border-collapse:collapse;width:100%;margin-top:10px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--linha);font-size:15.4px}
+  th{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--azul);
+     font-weight:700;border-bottom:2px solid var(--linha)}
+  td.prazo{font-weight:700;color:var(--azul);white-space:nowrap}
+
+  /* ---------- áreas ---------- */
+  .areas{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:2px;
+         background:var(--linha);border:1px solid var(--linha);margin-top:6px}
+  .area{background:#fff;padding:20px 22px}
+  .area h3{font-size:16.5px;margin-bottom:5px}
+  .area p{font-size:14.6px;color:var(--cinza);margin:0}
+  .tags{margin-top:11px;display:flex;gap:6px;flex-wrap:wrap}
+  .tag{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+       padding:3px 8px;border:1px solid var(--dourado);color:#8A7226;border-radius:2px}
+  .tag.pj{border-color:var(--azul-nevoa);color:var(--azul-nevoa)}
+
+  /* ---------- experiência ---------- */
+  .exp{margin-top:10px}
+  .exp-linha{display:grid;grid-template-columns:minmax(180px,1.25fr) 3fr 46px;gap:16px;
+             align-items:center;padding:8px 0;border-bottom:1px solid var(--linha)}
+  .exp-linha:last-child{border-bottom:0}
+  .exp-linha .nome{font-size:15.4px;color:var(--grafite)}
+  .exp-linha .trilho{height:11px;background:var(--cinza-nevoa);border-radius:2px;overflow:hidden}
+  .exp-linha .barra{height:100%;background:var(--dourado);border-radius:2px}
+  .exp-linha .qtd{font-size:15.4px;font-weight:700;color:var(--azul);text-align:right}
+
+  /* ---------- benefícios ---------- */
+  .beneficios{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:2px;
+              background:var(--linha);border:1px solid var(--linha);margin-top:8px}
+  .ben{background:#fff;padding:22px}
+  .ben strong{display:block;color:var(--azul);font-family:Georgia,serif;font-size:16.6px;
+              margin-bottom:5px}
+  .ben span{font-size:14.8px;color:var(--cinza)}
+
+  .nota{border-left:4px solid var(--dourado);background:var(--cinza-nevoa);padding:22px 26px;
+        margin-top:20px}
+  .nota p{font-size:16px}
+  .nota.sobria{border-left-color:var(--azul-nevoa);background:#fff;border:1px solid var(--linha);
+               border-left:4px solid var(--azul-nevoa)}
+
+  /* ---------- contato ---------- */
+  .contato{background:var(--azul);color:#EEF2F6;padding:48px 0 42px}
+  .contato h2{color:#fff}
+  .contato .grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+                  gap:22px;margin-top:24px}
+  .contato dt{font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+              color:var(--dourado-claro);font-weight:700;margin-bottom:4px}
+  .contato dd{font-size:16px;color:#fff}
+  .contato a{color:#fff}
+
+  footer{background:#12283F;color:#93A3B4;padding:26px 0;font-size:12.8px}
+  footer p{max-width:none;margin-bottom:6px}
+  footer strong{color:#C6D2DE}
+
+  @media (max-width:720px){
+    body{font-size:16px}
+    .capa h1{font-size:30px}
+    .escopo,.niveis{grid-template-columns:1fr}
+    .exp-linha{grid-template-columns:1fr 60px;gap:8px}
+    .exp-linha .trilho{display:none}
+  }
+
+  /* ---------- impressão / PDF ---------- */
+  @page{size:A4;margin:14mm 15mm}
+  @media print{
+    /* Painel dentro da caixa de pagina. Margem negativa para sangrar ate a borda
+       quebra no Chrome: o fundo e' recortado e o texto vaza, dando branco sobre branco. */
+    body{font-size:10.6pt;line-height:1.5}
+    .env{max-width:none;padding:0 14mm}
+
+    .capa{height:265mm;padding:44mm 0 0;break-after:page;display:flex;align-items:center}
+    .capa::after{height:4mm}
+    .capa img{height:18mm;margin-bottom:22mm}
+    .capa h1{font-size:27pt}
+    .capa .lead{font-size:12pt;margin-top:8mm}
+    .capa .selo{margin-top:16mm;font-size:10pt}
+
+    section{padding:8mm 0;break-inside:auto}
+    h2{font-size:16pt}
+    h2 + .sub{margin-bottom:6mm}
+    h3{font-size:11.5pt}
+    .area,.ben,.nivel,.col-escopo,.nota{break-inside:avoid}
+    .exp-linha,tr{break-inside:avoid}
+    .areas{grid-template-columns:repeat(2,1fr)}
+    .beneficios{grid-template-columns:repeat(2,1fr)}
+    .escopo{gap:8mm}
+
+    .contato{padding:12mm 0;break-inside:avoid}
+    footer{padding:8mm 0;break-inside:avoid}
+    a{text-decoration:none}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+
+<header class="capa">
+  <div class="env">
+    <img src="data:image/png;base64,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" alt="Alex Farias &amp; Advogados Associados">
+    <p class="oab">OAB/SP 381.442</p>
+    <h1>Assessoria Jurídica Empresarial</h1>
+    <p class="lead">
+      Acompanhamento jurídico contínuo para empresas, com escopo definido em contrato,
+      prazos de resposta acordados e revisão periódica. O jurídico deixa de ser chamado
+      quando o problema já aconteceu.
+    </p>
+    <p class="selo">
+      Alex Candido Farias Sociedade Individual de Advocacia · Panorama, São Paulo · 2026
+    </p>
+  </div>
+</header>
+
+<section>
+  <div class="env">
+    <p class="rotulo">O modelo</p>
+    <h2>O que é a avença mensal</h2>
+    <p class="sub">
+      Não é um caso avulso pago por mês. É a contratação de disponibilidade e prevenção.
+    </p>
+    <p>
+      A empresa passa a ter um advogado à disposição para as decisões do dia a dia — o
+      contrato que vai ser assinado, a notificação que chegou, a alteração societária, a
+      dúvida sobre uma rotina interna. O escopo é fechado e está escrito no contrato, com
+      o que está incluso e o que não está.
+    </p>
+    <p>
+      A lógica é simples de verificar na própria empresa. O custo de revisar um contrato
+      antes da assinatura é conhecido e pequeno. O custo de discutir esse mesmo contrato
+      em juízo, dois anos depois, não é nenhum dos dois.
+    </p>
+    <div class="nota">
+      <p>
+        <strong>A fronteira que sustenta o modelo.</strong> A assessoria é preventiva e
+        consultiva. Quando uma questão vira processo judicial, ela sai da avença e passa a
+        ser contratada à parte, com escopo e honorários próprios. Isso está expresso no
+        contrato, e é dito aqui pelo mesmo motivo: cliente que presume estar tudo incluso
+        descobre o contrário no pior momento possível.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="env">
+    <p class="rotulo">Serviços</p>
+    <h2>O que está e o que não está incluso</h2>
+    <p class="sub">
+      A coluna da direita não é limitação escondida em letra miúda. É a informação que
+      permite comparar propostas.
+    </p>
+    <div class="escopo">
+      <div class="col-escopo">
+        <h3>Incluso na mensalidade</h3>
+        <div class="item">
+          <strong>Societário</strong>
+          <span>Contrato social e alterações, acordo de sócios, governança, estruturação
+          societária e holding.</span>
+        </div>
+        <div class="item">
+          <strong>Contratual</strong>
+          <span>Redação e revisão de contratos empresariais, acordo de confidencialidade,
+          parceria e fornecimento, com parecer que sinaliza os pontos de risco.</span>
+        </div>
+        <div class="item">
+          <strong>Proteção de dados e compliance</strong>
+          <span>Diagnóstico de adequação à LGPD, políticas internas, resposta a incidente
+          e rotinas de conformidade.</span>
+        </div>
+        <div class="item">
+          <strong>Regulatório do setor</strong>
+          <span>Conformidade documental e acompanhamento das normas que alcançam a
+          atividade da empresa.</span>
+        </div>
+        <div class="item">
+          <strong>Consultivo recorrente</strong>
+          <span>Orientação sobre as operações do dia a dia, análise de documentos e de
+          notificações recebidas.</span>
+        </div>
+      </div>
+      <div class="col-escopo fora">
+        <h3>Contratação apartada</h3>
+        <div class="item">
+          <strong>Contencioso judicial</strong>
+          <span>Ajuizamento e defesa em processo, de qualquer natureza. Escopo e honorários
+          próprios, definidos caso a caso.</span>
+        </div>
+        <div class="item">
+          <strong>Trabalhista</strong>
+          <span>Fora do escopo desta avença, por decisão de estrutura do escritório.</span>
+        </div>
+        <div class="item">
+          <strong>Tributário complexo</strong>
+          <span>Contencioso tributário e planejamento de maior extensão.</span>
+        </div>
+        <div class="item">
+          <strong>Recuperação judicial e falência</strong>
+          <span>Frente própria, com equipe e contrato dedicados.</span>
+        </div>
+        <div class="item">
+          <strong>Defesa em auto de infração ambiental</strong>
+          <span>Contencioso administrativo ambiental, com contratação específica.</span>
+        </div>
+        <div class="item">
+          <strong>Custas e despesas</strong>
+          <span>Emolumentos, taxas de Junta Comercial, cartório e deslocamentos não estão
+          na mensalidade.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="env">
+    <p class="rotulo">Níveis</p>
+    <h2>Três formas de contratar</h2>
+    <p class="sub">
+      A escolha depende do volume de decisões jurídicas que a empresa toma por mês, não do
+      seu faturamento. Os valores são apresentados em proposta, depois da reunião de
+      diagnóstico.
+    </p>
+    <div class="niveis">
+      <div class="nivel">
+        <span class="faixa">Nível 1</span>
+        <h3>Consulta mensal</h3>
+        <p class="resumo">Para a empresa que precisa de um canal jurídico confiável antes
+        de decidir, e ainda não gera demanda contínua.</p>
+        <ul>
+          <li>Uma consulta por mês, com hora marcada</li>
+          <li>Análise de um documento ou situação por consulta</li>
+          <li>Orientação por escrito do que foi tratado</li>
+          <li>A consulta não utilizada não acumula para o mês seguinte</li>
+          <li>Serviço adicional é contratado à parte, na tabela vigente</li>
+        </ul>
+      </div>
+      <div class="nivel">
+        <span class="faixa">Nível 2</span>
+        <h3>Assessoria plena</h3>
+        <p class="resumo">Para a empresa com rotina contratual e societária ativa, que
+        precisa de resposta ao longo do mês.</p>
+        <ul>
+          <li>Consultas ao longo do mês, sem limite por sessão</li>
+          <li>Revisão e redação de contratos da operação</li>
+          <li>Alterações societárias e atos de registro</li>
+          <li>Análise das notificações e cobranças recebidas</li>
+          <li>Mapa de riscos na entrada e revisão semestral de escopo</li>
+        </ul>
+      </div>
+      <div class="nivel">
+        <span class="faixa">Nível 3</span>
+        <h3>Assessoria integral</h3>
+        <p class="resumo">Para a empresa que quer o jurídico dentro do processo de decisão,
+        e não apenas consultado ao final.</p>
+        <ul>
+          <li>Tudo do nível anterior</li>
+          <li>Programa de adequação à LGPD conduzido do começo ao fim</li>
+          <li>Governança societária e acordo de sócios</li>
+          <li>Padronização dos contratos e das rotinas que geram passivo</li>
+          <li>Reunião periódica com a diretoria e relatório de acompanhamento</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="env">
+    <p class="rotulo">Compromissos</p>
+    <h2>Prazos que entram no contrato</h2>
+    <p class="sub">
+      Assessoria se mede por tempo de resposta, porque é isso que a empresa compra. Os
+      prazos abaixo são acordados por escrito.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Etapa</th><th>Prazo</th><th>O que acontece</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Resposta ao primeiro contato</td>
+          <td class="prazo">1 dia útil</td>
+          <td>Retorno de quem vai conduzir, não de atendimento intermediário</td>
+        </tr>
+        <tr>
+          <td>Triagem e verificação de conflito</td>
+          <td class="prazo">2 dias úteis</td>
+          <td>Confirmação de que o escritório pode atuar, antes de qualquer proposta</td>
+        </tr>
+        <tr>
+          <td>Reunião de diagnóstico</td>
+          <td class="prazo">5 dias úteis</td>
+          <td>Leitura da operação e das rotinas que originam demanda jurídica</td>
+        </tr>
+        <tr>
+          <td>Proposta</td>
+          <td class="prazo">3 dias úteis</td>
+          <td>Escopo, nível recomendado e investimento, por escrito</td>
+        </tr>
+        <tr>
+          <td>Mapa de riscos</td>
+          <td class="prazo">30 dias</td>
+          <td>Entregue após a assinatura, com as prioridades da empresa ordenadas</td>
+        </tr>
+        <tr>
+          <td>Revisão de escopo</td>
+          <td class="prazo">semestral</td>
+          <td>Ajuste do nível conforme o que a operação passou a exigir</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="env">
+    <p class="rotulo">Atuações</p>
+    <h2>Áreas em que o escritório atua</h2>
+    <p class="sub">
+      A etiqueta indica o que integra a avença mensal e o que é contratado à parte. Estar
+      fora da mensalidade não significa estar fora do escritório.
+    </p>
+    <div class="areas">
+      <div class="area">
+        <h3>Empresarial e Societário</h3>
+        <p>Constituição e reestruturação de sociedades, acordo de sócios, responsabilidade
+        de sócios, dissolução, distrato e proteção patrimonial lícita.</p>
+        <div class="tags"><span class="tag">Na avença</span></div>
+      </div>
+      <div class="area">
+        <h3>Civil e Contratos</h3>
+        <p>Elaboração e revisão de contratos, responsabilidade civil, cobrança,
+        indenização e notificação extrajudicial.</p>
+        <div class="tags"><span class="tag">Na avença</span><span class="tag pj">Contencioso à parte</span></div>
+      </div>
+      <div class="area">
+        <h3>Proteção de Dados e Compliance</h3>
+        <p>Adequação à LGPD, mapeamento de tratamento, políticas internas, resposta a
+        incidente e compliance societário.</p>
+        <div class="tags"><span class="tag">Na avença</span></div>
+      </div>
+      <div class="area">
+        <h3>Administrativo e Licitações</h3>
+        <p>Participação em licitações, impugnação e recurso administrativo, contratos com a
+        Administração, auditoria de conformidade e processo administrativo.</p>
+        <div class="tags"><span class="tag">Na avença</span><span class="tag pj">Contencioso à parte</span></div>
+      </div>
+      <div class="area">
+        <h3>Tributário</h3>
+        <p>Regimes de tributação, obrigações acessórias, planejamento lícito e discussão de
+        autuações.</p>
+        <div class="tags"><span class="tag pj">Contratação à parte</span></div>
+      </div>
+      <div class="area">
+        <h3>Imobiliário</h3>
+        <p>Compra e venda, aquisição em leilão, regularização, usucapião, imissão na posse e
+        conflitos possessórios.</p>
+        <div class="tags"><span class="tag pj">Contratação à parte</span></div>
+      </div>
+      <div class="area">
+        <h3>Locatício</h3>
+        <p>Contratos de locação e aditivos, acordos com confissão de dívida, ação
+        renovatória, despejo e cobrança de aluguéis.</p>
+        <div class="tags"><span class="tag pj">Contratação à parte</span></div>
+      </div>
+      <div class="area">
+        <h3>Seguros</h3>
+        <p>Análise de apólice, contestação de negativa de cobertura, cobrança securitária e
+        revisão de cláusulas.</p>
+        <div class="tags"><span class="tag pj">Contratação à parte</span></div>
+      </div>
+      <div class="area">
+        <h3>Trabalhista</h3>
+        <p>Defesa, auditoria preventiva, adequação de rotinas e acordos. Frente conduzida
+        fora desta avença.</p>
+        <div class="tags"><span class="tag pj">Contratação à parte</span></div>
+      </div>
+      <div class="area">
+        <h3>Ambiental</h3>
+        <p>Defesa em auto de infração, licenciamento, outorga de uso da água, CAR e
+        regularização de atividade rural ou industrial.</p>
+        <div class="tags"><span class="tag pj">Contratação à parte</span></div>
+      </div>
+      <div class="area">
+        <h3>Sucessões e Patrimônio</h3>
+        <p>Inventário, testamento, partilha, ITCMD, holding familiar e planejamento
+        sucessório preventivo.</p>
+        <div class="tags"><span class="tag pj">Contratação à parte</span></div>
+      </div>
+      <div class="area">
+        <h3>Defesa Criminal</h3>
+        <p>Crimes empresariais e tributários, prisão em flagrante, cautelares, habeas
+        corpus, resposta à acusação e instrução.</p>
+        <div class="tags"><span class="tag pj">Contratação à parte</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="env">
+    <p class="rotulo">Experiência</p>
+    <h2>Onde o escritório já atuou</h2>
+    <p class="sub">
+      Volume de atuação por área, extraído do próprio cadastro de clientes do escritório.
+      Nenhum cliente é identificado e nenhum resultado é apresentado.
+    </p>
+    <div class="exp">
+      <div class="exp-linha"><span class="nome">Civil e Contratos</span><div class="trilho"><div class="barra" style="width:100%"></div></div><span class="qtd">74</span></div>
+      <div class="exp-linha"><span class="nome">Trabalhista</span><div class="trilho"><div class="barra" style="width:23%"></div></div><span class="qtd">17</span></div>
+      <div class="exp-linha"><span class="nome">Seguros</span><div class="trilho"><div class="barra" style="width:23%"></div></div><span class="qtd">17</span></div>
+      <div class="exp-linha"><span class="nome">Administrativo e Licitações</span><div class="trilho"><div class="barra" style="width:16%"></div></div><span class="qtd">12</span></div>
+      <div class="exp-linha"><span class="nome">Defesa Criminal</span><div class="trilho"><div class="barra" style="width:15%"></div></div><span class="qtd">11</span></div>
+      <div class="exp-linha"><span class="nome">Família e Regime de Bens</span><div class="trilho"><div class="barra" style="width:12%"></div></div><span class="qtd">9</span></div>
+      <div class="exp-linha"><span class="nome">Consumidor</span><div class="trilho"><div class="barra" style="width:12%"></div></div><span class="qtd">9</span></div>
+      <div class="exp-linha"><span class="nome">Imobiliário</span><div class="trilho"><div class="barra" style="width:11%"></div></div><span class="qtd">8</span></div>
+      <div class="exp-linha"><span class="nome">Sucessões e Patrimônio</span><div class="trilho"><div class="barra" style="width:11%"></div></div><span class="qtd">8</span></div>
+      <div class="exp-linha"><span class="nome">Empresarial e Societário</span><div class="trilho"><div class="barra" style="width:7%"></div></div><span class="qtd">5</span></div>
+      <div class="exp-linha"><span class="nome">Previdenciário</span><div class="trilho"><div class="barra" style="width:5%"></div></div><span class="qtd">4</span></div>
+      <div class="exp-linha"><span class="nome">Saúde</span><div class="trilho"><div class="barra" style="width:5%"></div></div><span class="qtd">4</span></div>
+      <div class="exp-linha"><span class="nome">Tributário</span><div class="trilho"><div class="barra" style="width:4%"></div></div><span class="qtd">3</span></div>
+      <div class="exp-linha"><span class="nome">Locatício</span><div class="trilho"><div class="barra" style="width:1.5%"></div></div><span class="qtd">1</span></div>
+      <div class="exp-linha"><span class="nome">Proteção de Dados e Compliance</span><div class="trilho"><div class="barra" style="width:1.5%"></div></div><span class="qtd">1</span></div>
+      <div class="exp-linha"><span class="nome">Ambiental</span><div class="trilho"><div class="barra" style="width:1.5%"></div></div><span class="qtd">1</span></div>
+    </div>
+    <div class="nota sobria">
+      <p>
+        <strong>Como ler estes números.</strong> A contagem é de <strong>clientes
+        atendidos</strong>, apurada sobre 115 cadastros classificados por área. Um mesmo
+        cliente aparece em mais de uma área quando o caso envolve mais de uma frente.
+      </p>
+      <p>
+        O número de <strong>processos é maior</strong>, e em alguns casos muito maior. Um
+        único cliente empresarial pode responder por dezenas ou centenas de processos, e
+        conta uma vez só nesta tabela.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="env">
+    <p class="rotulo">Benefícios</p>
+    <h2>O que acompanha a assessoria</h2>
+    <p class="sub">
+      Estrutura que o escritório já opera, incluída sem custo adicional em qualquer nível.
+    </p>
+    <div class="beneficios">
+      <div class="ben">
+        <strong>Prazos conferidos todo dia</strong>
+        <span>Publicações e intimações são verificadas diariamente. Cada prazo é calculado
+        com demonstrativo auditável, observando dias úteis ou corridos conforme o rito,
+        feriados forenses e as regras de disponibilização eletrônica.</span>
+      </div>
+      <div class="ben">
+        <strong>Página exclusiva de acompanhamento</strong>
+        <span>Em casos de maior extensão, a empresa recebe uma página protegida por senha
+        com o estado de cada frente, o que já foi feito e qual é o próximo passo. Sem
+        precisar telefonar para saber.</span>
+      </div>
+      <div class="ben">
+        <strong>Linguagem que se entende</strong>
+        <span>Decisão, parecer e cálculo são traduzidos antes de chegar à diretoria. O texto
+        técnico continua existindo para o processo. Para quem decide, o que importa é o que
+        aconteceu e o que fazer.</span>
+      </div>
+      <div class="ben">
+        <strong>Documentos padronizados</strong>
+        <span>Contratos, notificações e políticas da empresa saem em modelo próprio,
+        reutilizável pela equipe interna, e não como peça avulsa a cada vez.</span>
+      </div>
+      <div class="ben">
+        <strong>Interlocução com quem já atende a empresa</strong>
+        <span>Contabilidade, engenharia, corretora e demais áreas técnicas. O jurídico
+        conversa com elas diretamente, em vez de usar a diretoria como intermediária.</span>
+      </div>
+      <div class="ben">
+        <strong>Previsibilidade de custo</strong>
+        <span>Valor mensal definido e escopo escrito. O que estiver fora é informado antes
+        de ser executado, nunca depois.</span>
+      </div>
+      <div class="ben">
+        <strong>Atendimento direto</strong>
+        <span>Quem conversa com a empresa é quem conduz o caso. Não há camada intermediária
+        entre quem explica o problema e quem define a estratégia.</span>
+      </div>
+      <div class="ben">
+        <strong>Sigilo e proteção de dados</strong>
+        <span>Os dados são tratados apenas para a execução do contrato e o cumprimento de
+        obrigações legais, na forma da Lei nº 13.709/2018. O sigilo profissional subsiste
+        após o fim do contrato.</span>
+      </div>
+    </div>
+    <div class="nota">
+      <p>
+        <strong>O que não é prometido.</strong> A advocacia é obrigação de meio, e não de
+        resultado. O compromisso do escritório é com a qualidade técnica, o cumprimento de
+        prazos, a informação honesta sobre riscos e a condução ética do caso. Nenhum
+        resultado é prometido, porque a decisão não pertence ao advogado.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="contato">
+  <div class="env">
+    <p class="rotulo">Contato</p>
+    <h2>Para conversar sobre a assessoria</h2>
+    <p style="color:#D8E0E9;max-width:62ch">
+      A contratação começa por uma reunião de diagnóstico, em que se apura o que a operação
+      da empresa exige e se define o escopo. A proposta é elaborada depois, sobre o escopo
+      definido.
+    </p>
+    <dl class="grade">
+      <div>
+        <dt>Responsável</dt>
+        <dd>Dr. Alex Candido Farias<br>OAB/SP 381.442</dd>
+      </div>
+      <div>
+        <dt>E-mail</dt>
+        <dd><a href="mailto:contato@alexfarias.com">contato@alexfarias.com</a></dd>
+      </div>
+      <div>
+        <dt>Telefone</dt>
+        <dd>(18) 98153-4008</dd>
+      </div>
+      <div>
+        <dt>Endereço</dt>
+        <dd>Rua Lino Bassoli, 607<br>Centro, Panorama/SP<br>CEP 17984-016</dd>
+      </div>
+      <div>
+        <dt>Atendimento</dt>
+        <dd>Segunda a sexta, das 9h às 18h</dd>
+      </div>
+      <div>
+        <dt>Site</dt>
+        <dd><a href="https://www.alexfarias.com">www.alexfarias.com</a></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <div class="env">
+    <p><strong>ALEX CANDIDO FARIAS SOCIEDADE INDIVIDUAL DE ADVOCACIA</strong> · CNPJ
+    46.102.621/0001-87 · OAB/SP 381.442</p>
+    <p>Rua Lino Bassoli, 607, Centro, Panorama, São Paulo, CEP 17984-016 ·
+    contato@alexfarias.com · (18) 98153-4008 · www.alexfarias.com</p>
+    <p>Documento informativo, elaborado na forma do Provimento CFOAB nº 205/2021 e do
+    Código de Ética e Disciplina da OAB. Não constitui oferta de serviço nem consulta
+    jurídica, e não dispensa a análise prévia de cada caso. A contratação depende de
+    verificação de conflito de interesses e de proposta específica.</p>
+  </div>
+</footer>
+
+</body>
+</html>
