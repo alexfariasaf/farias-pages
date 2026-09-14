@@ -141,7 +141,10 @@ a.map:hover{background:var(--navy);color:#fff}
 /* contagem */
 .count{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
 .count div{background:var(--navy);color:#fff;border-radius:12px;padding:12px 16px;min-width:78px;text-align:center;border-bottom:3px solid var(--gold)}
-.count b{display:block;font-family:var(--display);font-size:1.8rem;line-height:1}
+.count b{display:block;font-family:var(--display);font-size:1.8rem;line-height:1;font-variant-numeric:tabular-nums}
+.count .alvo{background:#fff;color:var(--navy);border:1px solid var(--line);border-bottom:3px solid var(--gold)}
+.count .alvo b{font-size:1rem;padding-top:6px}
+.count .alvo small{color:#8f6d22}
 .count small{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright)}
 
 /* cidade */
