@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Subpágina do estudo AFAA sobre transporte de cargas: o seguro de carga do dono da mercadoria — quando é obrigatório, coberturas, averbação, DDR, sinistro e regresso, com a nova Lei de Seguros (Lei 15.040/2024).">
+<meta property="og:title" content="Seguro de Carga do Embarcador — o que você precisa saber">
+<meta property="og:description" content="Subpágina do estudo AFAA sobre transporte de cargas: o seguro de carga do dono da mercadoria — quando é obrigatório, coberturas, averbação, DDR, sinistro e regresso, com a nova Lei de Seguros (Lei 15.040/2024).">
+<meta property="og:type" content="article">
+<title>Seguro de Carga do Embarcador — o que você precisa saber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#030409;
+    --bg2:#0f1117;
+    --surface:#1a1c24;
+    --surface2:#282a32;
+    --ink:#ffffff;
+    --muted:rgba(255,255,255,.78);
+    --faint:rgba(255,255,255,.42);
+    --line:rgba(226,192,116,.18);
+    --accent:#e2c074;
+    --accent-dim:#c9a456;
+    --accent2:#fdba74;
+    --accent2-dim:#e09a4e;
+    --accent3:#5eead4;
+    --on-accent:#030409;
+    --on-accent2:#030409;
+    --accent-soft:rgba(226,192,116,.35);
+    --accent-wash:rgba(226,192,116,.06);
+    --glow1:rgba(226,192,116,.10);
+    --glow2:rgba(94,234,212,.05);
+    --nav-bg:rgba(3,4,9,.85);
+    --code-ink:#ece8df;
+    --font-display:'Sora';
+    --font-body:'DM Sans';
+    --font-mono:'JetBrains Mono';
+    --body-weight:400;
+    --r:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:var(--font-body),sans-serif; line-height:1.65; font-weight:var(--body-weight,350);
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+    background-image:
+      radial-gradient(900px 600px at 88% -8%, var(--glow1), transparent 58%),
+      radial-gradient(700px 500px at -5% 25%, var(--glow2), transparent 55%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
+  ::selection{background:var(--accent);color:var(--on-accent)}
+
+  /* noise overlay (assinatura Marcílio) */
+  .noise-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* progress bar */
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;
+    background:linear-gradient(90deg,var(--accent3),var(--accent),var(--accent2));
+    box-shadow:0 0 18px rgba(226,192,116,.5);transition:width .1s linear}
+
+  /* nav */
+  nav.bar{position:sticky;top:0;z-index:50;background:var(--nav-bg);
+    backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  nav.bar .wrap{display:flex;align-items:center;gap:8px;padding:13px 26px}
+  .logo{font-family:var(--font-display),sans-serif;font-weight:700;font-size:1rem;
+    letter-spacing:-.02em;color:var(--ink);margin-right:auto;display:flex;align-items:center;gap:9px}
+  .logo .mark{min-width:26px;height:26px;border-radius:7px;padding:0 9px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-dim));
+    display:grid;place-items:center;color:var(--on-accent);font-weight:800;font-size:.9rem;letter-spacing:.04em}
+  .logo b{color:var(--accent)}
+  nav.bar a.link{text-decoration:none;color:var(--muted);font-size:.82rem;padding:7px 13px;
+    border-radius:999px;transition:.25s;font-weight:500;white-space:nowrap}
+  nav.bar a.link:hover{color:var(--ink);background:var(--surface)}
+  nav.bar .cta{background:var(--accent);color:var(--on-accent);font-weight:700;font-size:.82rem;
+    padding:8px 16px;border-radius:999px;text-decoration:none;transition:.25s}
+  nav.bar .cta:hover{background:var(--accent2);color:var(--on-accent2)}
+  @media(max-width:880px){nav.bar a.link{display:none}}
+
+  /* hero */
+  header.hero{padding:88px 0 56px;position:relative}
+  .kicker{font-family:var(--font-mono),monospace;font-size:.72rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--accent);opacity:0;animation:rise .8s .1s forwards;
+    display:inline-flex;align-items:center;gap:10px}
+  .kicker::before{content:"";width:26px;height:1px;background:var(--accent)}
+  h1.title{font-family:var(--font-display),sans-serif;font-weight:700;
+    font-size:clamp(2.5rem,6.5vw,4.7rem);line-height:1.02;letter-spacing:-.025em;
+    margin:.35em 0 .3em;opacity:0;animation:rise .9s .22s forwards}
+  h1.title em{font-style:normal;
+    background:linear-gradient(135deg,var(--accent),var(--accent-dim),#f5dea3,var(--accent));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    background-size:200% 200%;animation:gradient-shift 4s ease infinite}
+  @keyframes gradient-shift{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+  h1.title .c{color:var(--accent2)}
+  .lede{font-size:1.15rem;color:var(--muted);max-width:600px;
+    opacity:0;animation:rise .9s .36s forwards}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;
+    opacity:0;animation:rise .9s .46s forwards}
+  .badge{font-family:var(--font-mono),monospace;font-size:.72rem;color:var(--muted);
+    background:var(--surface);border:1px solid var(--line);padding:6px 13px;border-radius:999px}
+  .badge b{color:var(--accent)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px;
+    opacity:0;animation:rise .9s .58s forwards}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:20px 18px;text-align:center;position:relative;overflow:hidden}
+  .stat .n{font-family:var(--font-display),sans-serif;font-weight:700;font-size:2rem;
+    color:var(--ink);line-height:1}
+  .stat .l{font-family:var(--font-mono),monospace;font-size:.62rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--faint);margin-top:6px}
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+  /* map / sumario */
+  .map{margin:56px 0;background:var(--surface);border:1px solid var(--line);
+    border-radius:22px;padding:30px}
+  .map h3{font-family:var(--font-display),sans-serif;font-size:1.05rem;font-weight:600;
+    margin-bottom:4px}
+  .map .mh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+  .map .mh span{font-family:var(--font-mono),monospace;font-size:.72rem;color:var(--faint)}
+  .map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .map-grid a{text-decoration:none;background:var(--bg2);border:1px solid var(--line);
+    border-radius:12px;padding:14px 16px;transition:.3s;display:block}
+  .map-grid a:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .map-grid .mn{font-family:var(--font-mono),monospace;font-size:.66rem;color:var(--accent)}
+  .map-grid .mt{font-weight:600;color:var(--ink);font-size:.95rem;margin:4px 0 2px}
+  .map-grid .mm{font-size:.74rem;color:var(--faint)}
+  @media(max-width:680px){.map-grid{grid-template-columns:1fr}}
+
+  /* scenes */
+  .scene{padding:30px 0;border-top:1px solid var(--line)}
+  .scene-head{display:flex;gap:18px;align-items:flex-start;cursor:pointer;user-select:none}
+  .scene-num{font-family:var(--font-display),sans-serif;font-weight:800;font-size:2.4rem;
+    color:var(--surface2);line-height:.9;flex-shrink:0;transition:.3s;
+    -webkit-text-stroke:1px var(--line)}
+  .scene.open .scene-num{color:var(--accent);-webkit-text-stroke:1px var(--accent)}
+  .scene-head .htext{flex:1}
+  .scene-eyebrow{font-family:var(--font-mono),monospace;font-size:.68rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:flex;gap:12px;align-items:center}
+  .scene-eyebrow .t{color:var(--faint)}
+  .scene h2{font-family:var(--font-display),sans-serif;font-weight:600;
+    font-size:clamp(1.5rem,3.2vw,2.1rem);line-height:1.12;letter-spacing:-.015em}
+  .scene-toggle{flex-shrink:0;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
+    display:grid;place-items:center;color:var(--accent);font-size:1.1rem;transition:.3s;margin-top:4px}
+  .scene.open .scene-toggle{transform:rotate(45deg);background:var(--accent);color:var(--on-accent)}
+  .scene-body{max-height:0;overflow:hidden;transition:max-height .5s ease;padding-left:0}
+  .scene.open .scene-body{max-height:4000px}
+  .scene-inner{padding:22px 0 8px;color:var(--muted);font-size:1.02rem}
+  .scene-inner p{margin-bottom:14px}
+  .scene-inner>p:first-of-type::first-letter{font-family:var(--font-display),sans-serif;
+    float:left;font-size:2.9em;line-height:.82;font-weight:800;margin:6px 11px 0 0;color:var(--accent)}
+  .scene-inner strong{color:var(--ink);font-weight:600}
+  .scene-inner .mint{color:var(--accent);font-weight:500}
+
+  .pull{font-family:var(--font-display),sans-serif;font-style:italic;font-size:1.3rem;
+    color:var(--ink);border-left:3px solid var(--accent);padding:8px 0 8px 22px;margin:20px 0;line-height:1.35}
+
+  /* split panels */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;transition:.3s}
+  .panel:hover{transform:translateY(-3px);border-color:var(--accent-soft)}
+  .panel .tag{font-family:var(--font-mono),monospace;font-size:.66rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent)}
+  .panel h4{font-family:var(--font-display),sans-serif;font-size:1.3rem;font-weight:600;margin:6px 0 4px;color:var(--ink)}
+  .panel .an{font-style:italic;color:var(--muted);font-size:.95rem;padding-bottom:12px;margin-bottom:12px;border-bottom:1px dashed var(--line)}
+  .panel ul{list-style:none}
+  .panel li{padding:5px 0 5px 20px;position:relative;font-size:.9rem;color:var(--ink)}
+  .panel li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:600}
+  @media(max-width:680px){.split{grid-template-columns:1fr}}
+
+  /* system cards */
+  .sys-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+  .sys{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;position:relative;overflow:hidden;transition:.3s}
+  .sys::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--c,var(--accent))}
+  .sys:hover{transform:translateY(-4px)}
+  .sys[data-s="a"]{--c:var(--accent3)} .sys[data-s="b"]{--c:var(--accent2)} .sys[data-s="c"]{--c:var(--accent)}
+  .sys .cat{font-family:var(--font-mono),monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--c,var(--accent));background:color-mix(in srgb,var(--c,var(--accent)) 14%,transparent);padding:4px 10px;border-radius:999px;display:inline-block}
+  .sys h4{font-family:var(--font-display),sans-serif;font-size:1.4rem;font-weight:600;margin:14px 0 3px}
+  .sys .owner{font-family:var(--font-mono),monospace;font-size:.72rem;color:var(--faint);margin-bottom:12px}
+  .sys p{font-size:.88rem;color:var(--muted)}
+  @media(max-width:680px){.sys-grid{grid-template-columns:1fr}}
+
+  /* tables */
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0;border-radius:14px}
+  .tbl-wrap .tbl{margin:0;min-width:540px}
+  .tbl{width:100%;border-collapse:collapse;font-size:.9rem;background:var(--surface);
+    border-radius:14px;overflow:hidden;border:1px solid var(--line);margin:16px 0}
+  .tbl th{background:var(--surface2);text-align:left;padding:13px 16px;
+    font-family:var(--font-mono),monospace;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .tbl td{padding:12px 16px;border-top:1px solid var(--line);color:var(--ink);vertical-align:top}
+  .tbl tr:hover td{background:var(--accent-wash)}
+  .pill{font-family:var(--font-mono),monospace;font-size:.7rem;padding:3px 9px;border-radius:6px;white-space:nowrap;font-weight:600}
+  .p-top{background:color-mix(in srgb,var(--accent2) 16%,transparent);color:var(--accent2)}
+  .p-mid{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+  .p-low{background:color-mix(in srgb,var(--accent3) 16%,transparent);color:var(--accent3)}
+
+  /* DIAGNOSTICO interativo */
+  .diag{background:linear-gradient(160deg,var(--surface2),var(--surface));
+    border:1px solid var(--line);border-radius:22px;padding:38px;margin:30px 0;position:relative;overflow:hidden}
+  .diag::before{content:"";position:absolute;width:320px;height:320px;border-radius:50%;
+    background:var(--accent);filter:blur(140px);opacity:.07;top:-120px;right:-80px}
+  .diag .dhead{font-family:var(--font-mono),monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .diag h3{font-family:var(--font-display),sans-serif;font-size:1.7rem;font-weight:600;margin-bottom:6px}
+  .diag .dsub{color:var(--muted);font-size:.95rem;margin-bottom:24px}
+  .diag-q{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--bg2);
+    border:1px solid var(--line);border-radius:12px;margin-bottom:10px;cursor:pointer;transition:.25s}
+  .diag-q:hover{border-color:var(--accent)}
+  .diag-q.on{border-color:var(--accent);background:var(--accent-wash)}
+  .diag-check{width:24px;height:24px;border-radius:7px;border:1.5px solid var(--faint);flex-shrink:0;
+    display:grid;place-items:center;transition:.25s;color:transparent;font-weight:700;font-size:.9rem}
+  .diag-q.on .diag-check{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  .diag-q span{font-size:.95rem;color:var(--ink)}
+  .diag-result{margin-top:24px;padding:24px;border-radius:16px;background:var(--bg2);
+    border:1px solid var(--line);display:flex;gap:20px;align-items:center}
+  .diag-score{font-family:var(--font-display),sans-serif;font-weight:800;font-size:3rem;
+    color:var(--accent);line-height:1;flex-shrink:0}
+  .diag-verdict b{color:var(--ink);font-family:var(--font-display),sans-serif;font-size:1.2rem;display:block;margin-bottom:4px}
+  .diag-verdict p{color:var(--muted);font-size:.9rem}
+
+  /* ROUTER */
+  .router{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:38px;margin:30px 0;position:relative;overflow:hidden}
+  .r-prog{display:flex;gap:6px;margin-bottom:26px}
+  .r-prog i{height:3px;flex:1;background:var(--line);border-radius:2px;transition:.4s}
+  .r-prog i.on{background:var(--accent)}
+  .r-step{display:none;animation:fade .4s ease}
+  .r-step.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .r-q{font-family:var(--font-display),sans-serif;font-size:1.4rem;font-weight:600;margin-bottom:6px}
+  .r-hint{color:var(--muted);font-size:.9rem;margin-bottom:22px}
+  .r-opts{display:flex;flex-direction:column;gap:11px}
+  .r-btn{text-align:left;background:var(--bg2);border:1px solid var(--line);color:var(--ink);
+    padding:17px 20px;border-radius:13px;cursor:pointer;font-family:inherit;font-size:1rem;
+    transition:.28s;display:flex;align-items:center;gap:14px}
+  .r-btn:hover{border-color:var(--accent);transform:translateX(6px)}
+  .r-btn .ico{font-family:var(--font-mono),monospace;color:var(--accent);font-size:.85rem;
+    border:1px solid var(--line);width:30px;height:30px;display:grid;place-items:center;border-radius:8px;flex-shrink:0}
+  .r-result{text-align:center}
+  .r-result .badge2{display:inline-block;font-family:var(--font-mono),monospace;font-size:.68rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--rc,var(--accent));
+    border:1px solid var(--rc,var(--accent));padding:6px 16px;border-radius:999px;margin-bottom:16px}
+  .r-result h4{font-family:var(--font-display),sans-serif;font-size:2rem;font-weight:700;color:var(--rc,var(--accent));margin-bottom:6px}
+  .r-result .why{color:var(--muted);max-width:460px;margin:0 auto 22px}
+  .r-reset{background:none;border:1px solid var(--line);color:var(--muted);padding:11px 24px;
+    border-radius:999px;cursor:pointer;font-family:var(--font-mono),monospace;font-size:.74rem;letter-spacing:.1em;transition:.25s}
+  .r-reset:hover{color:var(--ink);border-color:var(--accent)}
+
+  /* prompt copy */
+  .prompt{background:var(--bg2);border:1px solid var(--line);border-radius:14px;margin:18px 0;overflow:hidden}
+  .prompt-head{display:flex;justify-content:space-between;align-items:center;padding:11px 16px;
+    background:var(--surface2);border-bottom:1px solid var(--line)}
+  .prompt-head .pl{font-family:var(--font-mono),monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .copy-btn{background:var(--accent);color:var(--on-accent);border:none;padding:5px 14px;border-radius:7px;
+    font-family:var(--font-mono),monospace;font-size:.7rem;font-weight:600;cursor:pointer;transition:.2s}
+  .copy-btn:hover{background:var(--accent2);color:var(--on-accent2)}
+  .copy-btn.done{background:var(--accent2);color:var(--on-accent2)}
+  .prompt pre{padding:16px;font-family:var(--font-mono),monospace;font-size:.8rem;color:var(--code-ink);
+    white-space:pre-wrap;line-height:1.6;overflow-x:auto}
+
+  /* callout */
+  .note{display:grid;grid-template-columns:auto 1fr;gap:16px;background:var(--surface);
+    border:1px solid var(--line);border-radius:14px;padding:20px 24px;border-left:4px solid var(--accent2);margin:18px 0}
+  .note .ic{font-size:1.3rem}
+  .note h4{font-family:var(--font-display),sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:4px;color:var(--ink)}
+  .note p{color:var(--muted);font-size:.92rem}
+
+  /* generic prose helpers for simple pages */
+  .prose{color:var(--muted);font-size:1.02rem}
+  .prose h2{font-family:var(--font-display),sans-serif;font-weight:600;color:var(--ink);
+    font-size:clamp(1.5rem,3.2vw,2.1rem);margin:36px 0 10px;letter-spacing:-.015em}
+  .prose h3{font-family:var(--font-display),sans-serif;font-weight:600;color:var(--ink);font-size:1.3rem;margin:26px 0 8px}
+  .prose p{margin-bottom:14px}
+  .prose strong{color:var(--ink);font-weight:600}
+  .prose a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line)}
+  .prose ul,.prose ol{margin:0 0 14px 22px}
+  .prose li{margin-bottom:6px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* author / footer */
+  .author{margin:60px 0 0;background:linear-gradient(160deg,var(--surface2),var(--surface));
+    border:1px solid var(--line);border-radius:24px;padding:42px;position:relative;overflow:hidden}
+  .author::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;
+    background:var(--accent2);filter:blur(150px);opacity:.08;bottom:-120px;left:-60px}
+  .author .aphoto{float:right;width:170px;height:215px;object-fit:cover;object-position:50% 22%;
+    border-radius:18px;border:1px solid var(--line);margin:0 0 18px 28px;
+    box-shadow:0 18px 48px rgba(0,0,0,.45);box-shadow:0 0 0 1px var(--accent-soft),0 18px 48px rgba(0,0,0,.45)}
+  .author .ahead{font-family:var(--font-mono),monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .author h3{font-family:var(--font-display),sans-serif;font-size:2rem;font-weight:700;margin-bottom:8px}
+  .author .role{color:var(--accent);font-size:.95rem;margin-bottom:16px;font-weight:500}
+  .author p{color:var(--muted);max-width:600px;margin-bottom:22px}
+  .author .creds{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;margin:22px 0 26px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .author .creds .ct{grid-column:1/-1;font-family:var(--font-mono),monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  .author .creds li{list-style:none;padding:5px 0 5px 18px;position:relative;font-size:.9rem;color:var(--ink)}
+  .author .creds li::before{content:"›";position:absolute;left:0;color:var(--accent);font-weight:600}
+  .author .acta{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--on-accent);
+    font-weight:700;padding:14px 28px;border-radius:999px;text-decoration:none;font-size:1rem;transition:.3s}
+  .author .acta:hover{background:var(--accent2);color:var(--on-accent2);transform:translateY(-2px)}
+  .author .social{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .author .social a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    background:var(--surface);border:1px solid var(--line);color:var(--muted);
+    padding:9px 16px;border-radius:999px;font-size:.82rem;font-weight:500;transition:.25s}
+  .author .social a:hover{border-color:var(--accent);color:var(--ink);transform:translateY(-2px)}
+  @media(max-width:680px){.author .creds{grid-template-columns:1fr}
+    .author .aphoto{float:none;display:block;width:150px;height:190px;margin:0 0 22px}}
+
+  footer{padding:40px 0 70px;text-align:center;border-top:1px solid var(--line);margin-top:50px}
+  footer .fl{font-family:var(--font-mono),monospace;font-size:.72rem;color:var(--faint);letter-spacing:.08em;line-height:2}
+  footer .fl a{color:var(--accent);text-decoration:none}
+  .disclaimer{max-width:680px;margin:18px auto 0;font-size:.76rem;color:var(--faint);line-height:1.6}
+
+  @media(max-width:680px){
+    .diag,.router,.author{padding:26px}
+    .scene-num{font-size:1.8rem}
+    .wrap{padding:0 18px}
+    h1.title{font-size:clamp(1.9rem,7.6vw,2.6rem)}
+    .lede{font-size:1.05rem}
+    header.hero{padding:64px 0 40px}
+    .tbl{font-size:.84rem}
+    .tbl th,.tbl td{padding:10px 12px}
+    .scene-inner>p:first-of-type::first-letter{font-size:2.3em;margin:5px 9px 0 0}
+    .scene-head{gap:12px}
+    .diag-result{flex-direction:column;text-align:center;gap:12px}
+  }
+  .stats{grid-template-columns:repeat(3,1fr)}
+  @media (max-width:640px){.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="noise-overlay"></div>
+<div class="progress" id="progress"></div>
+
+<nav class="bar"><div class="wrap">
+  <span class="logo"><span class="mark">AFAA</span></span>
+  <a class="link" href="afaa-transporte-antt-2026.html">← Estudo completo</a>
+  <a class="link" href="#cena1">O que é</a>
+  <a class="link" href="#cena2">É obrigatório?</a>
+  <a class="link" href="#cena3">Cobertura</a>
+  <a class="link" href="#cena4">DDR</a>
+  <a class="link" href="#cena5">Sinistro</a>
+  <a class="link" href="#cena6">Regresso</a>
+  <a class="link" href="#cena7">Calendário</a>
+  <a class="cta" href="https://wa.me/5518981534008" target="_blank" rel="noopener">Falar com o escritório</a>
+</div></nav>
+
+<div class="wrap">
+<header class="hero" id="topo"><div class="wrap" style="padding:0">
+  <span class="kicker">Transporte de Cargas · Seguro do dono da mercadoria · Outubro de 2026</span>
+  <h1 class="title">O seguro da carga é seu,<br><em>não do</em> <span class="c">transportador.</span></h1>
+  <p class="lede">Os três seguros obrigatórios do transportador (RCTR-C, RC-DC e RC-V) protegem a responsabilidade dele. Esta página trata de outro contrato: o seguro de transporte que o dono da mercadoria faz para proteger o próprio patrimônio enquanto a carga viaja. O que ele cobre, quando é obrigatório, como funciona a DDR e o que muda com a nova Lei de Seguros.</p>
+  <div class="badges">
+    <span class="badge">Leitura <b>~10 min</b></span>
+    <span class="badge">Embarcadores · Indústria · Comércio · Importadores</span>
+    <span class="badge">Conferido em <b>14/10/2026</b></span>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="n">§ 8º</div><div class="l">Lei 11.442: seguro próprio do embarcador</div></div>
+    <div class="stat"><div class="n">30 + 30</div><div class="l">Dias para decidir e pagar (Lei 15.040)</div></div>
+    <div class="stat"><div class="n">05/01/27</div><div class="l">Regras gerais novas de seguros de danos (CNSP 496)</div></div>
+  </div>
+</div></header>
+
+<section class="scene open reveal" id="cena1">
+  <div class="scene-head" onclick="toggleScene(this)">
+    <div class="scene-num">01</div>
+    <div class="htext">
+      <div class="scene-eyebrow">Cena 01 · Conceito <span class="t">2 min</span></div>
+      <h2>Dois seguros, dois donos.</h2>
+    </div>
+    <div class="scene-toggle">+</div>
+  </div>
+  <div class="scene-body"><div class="scene-inner">
+    <p>Na redação original da Lei 11.442, o seguro feito pelo contratante do frete podia <strong>dispensar</strong> o transportador de contratar o seu (Lei 11.442, art. 13, redação original). A Lei 14.599/2023 acabou com isso: o RCTR-C, o RC-DC e o RC-V passaram a ser obrigação do transportador. E o § 8º do art. 13 diz que o dono da mercadoria pode contratar o <strong>seu</strong> seguro de transporte nacional <strong>independentemente</strong> dos seguros do transportador.</p>
+    <p class="pull">Hoje os dois correm em paralelo. Um não substitui o outro.</p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Critério</th><th>Seguro de carga do embarcador</th><th>RCTR-C e RC-DC do transportador</th></tr></thead>
+      <tbody>
+        <tr><td>Quem contrata</td><td>O dono da mercadoria (embarcador, indústria, comércio, importador)</td><td>O transportador, por obrigação legal</td></tr>
+        <tr><td>O que protege</td><td>O patrimônio do dono: a mercadoria em si</td><td>A responsabilidade do transportador pela carga</td></tr>
+        <tr><td>Quando paga</td><td>Pelos riscos cobertos na apólice, haja ou não culpa do transportador</td><td>Quando o transportador responde pelo dano, nos riscos da lei (acidente; roubo, furto e desaparecimento)</td></tr>
+        <tr><td>Depende do PGR do transportador?</td><td>Não diretamente. Vale o que estiver na apólice do embarcador</td><td>Sim: os dois seguros ficam vinculados ao PGR (art. 13, § 1º)</td></tr>
+        <tr><td>Base</td><td>Lei 11.442, art. 13, § 8º · DL 73, art. 20, "h" · Lei 15.040</td><td>Lei 11.442, art. 13, I e II · Res. CNSP 472/2024</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">
+      <div class="ic">📌</div>
+      <div><h4>Por que ter os dois</h4><p>O seguro do transportador só paga quando ele responde, até os limites da apólice dele e da lei. Roubo com cautelas adotadas pode ser força maior e afastar a responsabilidade do transportador. Sem valor declarado no CT-e, a responsabilidade dele fica limitada a 2 DES por quilo (Lei 11.442, art. 14). O seguro próprio cobre a mercadoria pelo valor dela, sem depender dessa discussão.</p></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="scene reveal" id="cena2">
+  <div class="scene-head" onclick="toggleScene(this)">
+    <div class="scene-num">02</div>
+    <div class="htext">
+      <div class="scene-eyebrow">Cena 02 · Obrigatoriedade <span class="t">2 min</span></div>
+      <h2>É obrigatório? Depende de quem pergunta.</h2>
+    </div>
+    <div class="scene-toggle">+</div>
+  </div>
+  <div class="scene-body"><div class="scene-inner">
+    <p>Há duas leis em vigor que dizem coisas diferentes, e nenhuma revogou a outra:</p>
+    <div class="split">
+      <div class="panel">
+        <div class="tag">Obrigatório para pessoa jurídica</div>
+        <h4>DL 73/1966 e Decreto 61.867/1967</h4>
+        <ul>
+          <li>O art. 20, "h", do DL 73 lista como obrigatório o seguro de "transporte de bens pertencentes a pessoas jurídicas, situados no País ou nêle transportados";</li>
+          <li>O Decreto 61.867, art. 12, obriga a pessoa jurídica a segurar os bens de sua propriedade transportados em território nacional, contra força maior e caso fortuito, acima de um piso de valor fixado em unidade monetária antiga, hoje sem conversão oficial clara;</li>
+          <li>Viagem internacional fica fora (art. 13 do Decreto), e a União também (DL 73, art. 20, parágrafo único);</li>
+          <li>Sanção prevista para quem deixa de contratar seguro obrigatório sem prêmio fixado em lei: o maior valor entre 10% da importância segurável e R$ 1.000 (DL 73, art. 112, II).</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="tag">"Facultativo"</div>
+        <h4>Lei 11.442/2007, art. 13, § 8º</h4>
+        <ul>
+          <li>Na redação da Lei 14.599/2023, o dono da mercadoria "poderá, a seu critério, contratar o seguro facultativo de transporte nacional";</li>
+          <li>A Lei 15.040/2024 revogou os arts. 9º a 14 do DL 73, mas não tocou no art. 20 nem no art. 112.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">
+      <div class="ic">⚖️</div>
+      <div><h4>Leitura do escritório</h4><p>A tensão está aberta: não localizamos norma, ato da SUSEP ou decisão que a resolva, nem notícia de aplicação recente da multa do art. 112 a embarcador. Para a pessoa jurídica que transporta bens próprios no país, contratar é o caminho mais seguro.</p></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="scene reveal" id="cena3">
+  <div class="scene-head" onclick="toggleScene(this)">
+    <div class="scene-num">03</div>
+    <div class="htext">
+      <div class="scene-eyebrow">Cena 03 · Contrato <span class="t">2 min</span></div>
+      <h2>O que cobre e como se contrata.</h2>
+    </div>
+    <div class="scene-toggle">+</div>
+  </div>
+  <div class="scene-body"><div class="scene-inner">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Ponto</th><th>Regra</th><th>Fonte</th></tr></thead>
+      <tbody>
+        <tr><td>Início e fim da garantia</td><td>Começa quando o transportador recebe de fato a mercadoria e cessa com a entrega ao destinatário. Armazém antes ou depois exige extensão expressa</td><td>Lei 15.040, art. 9º, § 4º</td></tr>
+        <tr><td>Coberturas</td><td>O mercado trabalha com coberturas básicas restritas (C ou B) e ampla (A), no plano padronizado da SUSEP. Conferir na apólice o que cada uma inclui</td><td>Circular SUSEP 354/2007 (texto lido em fonte secundária)</td></tr>
+        <tr><td>Apólice aberta e averbação</td><td>Na apólice aberta, cada embarque é informado por averbação. Omitir averbação, uma vez comprovado, faz perder a garantia, e o prêmio continua devido</td><td>Lei 15.040, art. 47</td></tr>
+        <tr><td>Valor segurado</td><td>Garantia e indenização não podem passar do valor do interesse. Em sinistro parcial com seguro abaixo do valor, não há rateio, salvo cláusula expressa com a fórmula exemplificada na apólice</td><td>Lei 15.040, arts. 89 a 91</td></tr>
+        <tr><td>Seguro por conta de terceiro</td><td>Quem segura carga de outro (venda com frete pago, importação) deve declarar o interesse alheio. Na falta de declaração, presume-se seguro por conta própria</td><td>Lei 15.040, arts. 24 a 26</td></tr>
+        <tr><td>Venda da carga em trânsito</td><td>A transferência do interesse leva o seguro junto, mas deve ser comunicada à seguradora em 30 dias, sob pena de a cessão deixar de ser eficaz</td><td>Lei 15.040, arts. 108 e 109</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">
+      <div class="ic">⚠️</div>
+      <div><h4>A maior porta de negativa: averbação</h4><p>O STJ exige, na apólice aberta, a averbação de <strong>todos</strong> os embarques (princípio da globalidade). O segurado não pode averbar só os de maior risco, e a falha afasta a cobertura, salvo equívoco de boa-fé (AgInt no REsp 1.913.315/SP, 3ª Turma, j. 01/06/2021). Exclusões expressas são válidas, mas com interpretação restritiva (AgInt no AREsp 2.104.851/SC, 4ª Turma, j. 02/10/2023).</p></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="scene reveal" id="cena4">
+  <div class="scene-head" onclick="toggleScene(this)">
+    <div class="scene-num">04</div>
+    <div class="htext">
+      <div class="scene-eyebrow">Cena 04 · DDR <span class="t">2 min</span></div>
+      <h2>Dispensa do Direito de Regresso.</h2>
+    </div>
+    <div class="scene-toggle">+</div>
+  </div>
+  <div class="scene-body"><div class="scene-inner">
+    <p>Pela DDR, a seguradora do embarcador, mediante prêmio adicional, <strong>renuncia a cobrar do transportador</strong> o que pagou ao embarcador. É usada para preservar a relação comercial com transportadores de confiança.</p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>O que se sabe</th><th>Fonte</th></tr></thead>
+      <tbody>
+        <tr><td>A DDR <strong>não dispensa</strong> o transportador dos seguros obrigatórios, sob nenhuma hipótese, inclusive o RC-DC</td><td>Res. CNSP 472/2024, art. 53 · comunicado SUSEP de 11/10/2023</td></tr>
+        <tr><td>A DDR livremente pactuada entre seguradora e segurado é válida, e seu afastamento exige demonstrar hipótese resolutiva específica</td><td>STJ, AREsp 2.715.311/SP, 3ª Turma, j. 16/03/2026</td></tr>
+        <tr><td>Tribunais de origem afastaram a DDR por culpa grave do motorista (embriaguez, infração de trânsito), e o STJ manteve essas decisões sem firmar tese própria</td><td>STJ, AREsp 3.178.720/GO (j. 12/08/2026) e AREsp 2.916.321/GO (j. 03/11/2025)</td></tr>
+        <tr><td>É ineficaz qualquer ato <strong>do segurado</strong> que diminua ou extinga a sub-rogação da seguradora</td><td>Lei 15.040, art. 94, § 1º</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">
+      <div class="ic">📌</div>
+      <div><h4>Leitura do escritório</h4><p>A renúncia tem de vir da seguradora, na apólice. Uma "carta de isenção" que o embarcador dê ao transportador por conta própria, sem a seguradora, tende a ser ineficaz perante ela. Antes de conceder DDR, leia a cláusula: quais exceções ela traz (culpa grave, dolo, descumprimento de PGR) e quem emite a carta.</p></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="scene reveal" id="cena5">
+  <div class="scene-head" onclick="toggleScene(this)">
+    <div class="scene-num">05</div>
+    <div class="htext">
+      <div class="scene-eyebrow">Cena 05 · Sinistro <span class="t">2 min</span></div>
+      <h2>Quando a carga se perde.</h2>
+    </div>
+    <div class="scene-toggle">+</div>
+  </div>
+  <div class="scene-body"><div class="scene-inner">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Etapa</th><th>Regra</th><th>Fonte</th></tr></thead>
+      <tbody>
+        <tr><td>Aviso e contenção</td><td>Avisar a seguradora prontamente e tomar providências para evitar ou reduzir o dano. Omissão dolosa faz perder a indenização; omissão culposa faz perder o valor do dano que ela causou</td><td>Lei 15.040, art. 66</td></tr>
+        <tr><td>Vistoria</td><td>Vistoria conjunta do contratante do frete e do transportador, com as respectivas seguradoras quando couber</td><td>Lei 11.442, art. 13, § 6º</td></tr>
+        <tr><td>Decisão da seguradora</td><td><strong>30 dias</strong> para se manifestar sobre a cobertura, sob pena de perder o direito de recusá-la. A recusa deve ser expressa e motivada</td><td>Lei 15.040, art. 86</td></tr>
+        <tr><td>Pagamento</td><td><strong>30 dias</strong> depois de reconhecida a cobertura. Na mora, multa de 2%, além de correção e juros</td><td>Lei 15.040, arts. 87 e 88</td></tr>
+        <tr><td>Prazo para processar a seguradora</td><td><strong>1 ano</strong> contado da ciência da recusa expressa e motivada, suspenso uma vez pelo pedido de reconsideração</td><td>Lei 15.040, arts. 126, II, e 127</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">
+      <div class="ic">📄</div>
+      <div><h4>Negativa verbal não basta</h4><p>Peça sempre a recusa por escrito, com a cláusula invocada. É ela que abre o prazo de 1 ano e fixa o fundamento que a seguradora terá de sustentar. Em apólices anteriores à Lei 15.040 (vigente desde dezembro de 2025), podem valer as regras antigas do Código Civil e a Súmula 229 do STJ, conforme a data de início do risco.</p></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="scene reveal" id="cena6">
+  <div class="scene-head" onclick="toggleScene(this)">
+    <div class="scene-num">06</div>
+    <div class="htext">
+      <div class="scene-eyebrow">Cena 06 · Regresso <span class="t">2 min</span></div>
+      <h2>Depois de pagar, a seguradora cobra o transportador.</h2>
+    </div>
+    <div class="scene-toggle">+</div>
+  </div>
+  <div class="scene-body"><div class="scene-inner">
+    <p>Ao indenizar, a seguradora assume os direitos do embarcador contra quem causou o dano (Lei 15.040, art. 94 · Súmula 188 do STF). Se o transportador tem seguro de responsabilidade civil, ela pode agir contra a seguradora dele (art. 95, parágrafo único). O que o embarcador faz antes do sinistro define quanto esse regresso vale.</p>
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Ponto</th><th>O que diz</th><th>Fonte</th></tr></thead>
+      <tbody>
+        <tr><td>Valor declarado</td><td>O transportador responde até o valor declarado no CT-e. Sem declaração, o limite é 2 DES por quilo de peso bruto</td><td>Lei 11.442, art. 14</td></tr>
+        <tr><td>Limite no regresso</td><td>Em regressiva da seguradora, o STJ negou provimento ao recurso e manteve acórdão que limitou a responsabilidade do transportador ao valor do conhecimento</td><td>AREsp 2.409.575/RJ, 4ª Turma, j. 16/12/2025</td></tr>
+        <tr><td>Roubo como força maior</td><td>Roubo com arma de fogo pode ser força maior e afastar o regresso, se o transportador adotou as cautelas; contratar seguro não equivale a gerenciar o risco</td><td>AgInt nos EDcl no REsp 1.862.704/SP, 4ª Turma, j. 07/04/2025</td></tr>
+        <tr><td>PGR descumprido</td><td>O descumprimento do PGR pelo transportador tira dele a excludente de força maior</td><td>AgInt no REsp 2.253.518/SP, 4ª Turma, j. 31/08/2026 · AgInt no REsp 2.130.975/PR, 3ª Turma, j. 24/02/2025</td></tr>
+        <tr><td>Protesto de 10 dias</td><td>O prazo do art. 754 do Código Civil para reclamar avaria não perceptível não se aplica à seguradora sub-rogada (caso de transporte aéreo)</td><td>AREsp 2.270.533/SP, 3ª Turma, j. 16/03/2026</td></tr>
+        <tr><td>Prescrição</td><td>A pretensão de reparação no contrato de transporte rodoviário prescreve em 1 ano, contado do conhecimento do dano. Não localizamos precedente do STJ que fixe o termo inicial para a seguradora sub-rogada no transporte rodoviário</td><td>Lei 11.442, art. 18</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">
+      <div class="ic">💡</div>
+      <div><h4>Por que declarar o valor no CT-e</h4><p>Pela lógica da sub-rogação, a seguradora assume o direito do embarcador como ele era. Sem valor declarado, o regresso tende a ficar limitado ao teto de 2 DES por quilo. Não localizamos precedente rodoviário do STJ sobre o ponto, mas declarar o valor real da mercadoria no CT-e evita a discussão.</p></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="scene reveal" id="cena7">
+  <div class="scene-head" onclick="toggleScene(this)">
+    <div class="scene-num">07</div>
+    <div class="htext">
+      <div class="scene-eyebrow">Cena 07 · Calendário <span class="t">1 min</span></div>
+      <h2>O que já mudou e o que vem.</h2>
+    </div>
+    <div class="scene-toggle">+</div>
+  </div>
+  <div class="scene-body"><div class="scene-inner">
+    <div class="tbl-wrap"><table class="tbl">
+      <thead><tr><th>Data</th><th>Norma</th><th>Efeito para o seguro de carga</th></tr></thead>
+      <tbody>
+        <tr><td>19/06/2023</td><td>Lei 14.599</td><td>Seguro do embarcador deixa de dispensar o do transportador (art. 13, § 8º)</td></tr>
+        <tr><td>30/09/2024</td><td>Res. CNSP 472 (DOU)</td><td>DDR não isenta dos seguros obrigatórios (art. 53)</td></tr>
+        <tr><td>Dez/2025</td><td>Lei 15.040 em vigor</td><td>Nova Lei de Seguros: averbação, regulação em 30 + 30 dias, rateio só por cláusula, prescrição a partir da recusa</td></tr>
+        <tr><td>05/01/2027</td><td>Res. CNSP 496/2026</td><td><span class="pill p-mid">Contratos formados ou renovados seguem as novas regras gerais de seguros de danos</span></td></tr>
+        <tr><td>Sem data</td><td>Nova circular SUSEP de transportes (Consulta Pública 5/2024)</td><td>Ainda pendente segundo a Res. SUSEP 91/2026. Até lá, vale o plano padronizado da Circular 354/2007</td></tr>
+      </tbody>
+    </table></div>
+    <p class="pull">Renovação de apólice a partir de janeiro de 2027 tende a vir com condições novas. Ler antes de assinar.</p>
+  </div></div>
+</section>
+
+<div class="diag reveal" id="diag" data-verdicts='[
+  {"max":2,"b":"Mercadoria exposta.","p":"Hoje a sua carga depende quase só do seguro do transportador, que paga apenas quando ele responde e dentro dos limites dele. Vale estruturar o seguro próprio."},
+  {"max":5,"b":"Em adequação.","p":"Há uma base, mas faltam pontos que abrem espaço para negativa de cobertura ou para regresso limitado. Revise os itens não marcados."},
+  {"max":99,"b":"Carga bem protegida.","p":"A estrutura atende às regras vigentes. Acompanhe a renovação de 2027 e a nova circular da SUSEP."}
+]'>
+  <div class="dhead">★ Checklist rápido</div>
+  <h3>A sua carga está protegida?</h3>
+  <p class="dsub">Marque o que já é verdade na sua empresa. Sem captura de dados.</p>
+  <div>
+    <div class="diag-q" onclick="toggleDiag(this)"><div class="diag-check">✓</div><span>Temos apólice própria de transporte, além de conferir os seguros do transportador.</span></div>
+    <div class="diag-q" onclick="toggleDiag(this)"><div class="diag-check">✓</div><span>Todos os embarques são averbados, dentro do prazo da apólice.</span></div>
+    <div class="diag-q" onclick="toggleDiag(this)"><div class="diag-check">✓</div><span>Sabemos qual cobertura contratamos (A, B ou C) e se há extensão para armazém.</span></div>
+    <div class="diag-q" onclick="toggleDiag(this)"><div class="diag-check">✓</div><span>O valor da mercadoria é declarado no CT-e.</span></div>
+    <div class="diag-q" onclick="toggleDiag(this)"><div class="diag-check">✓</div><span>Se damos DDR, ela vem da seguradora, na apólice, e conhecemos as exceções.</span></div>
+    <div class="diag-q" onclick="toggleDiag(this)"><div class="diag-check">✓</div><span>Temos rotina de aviso de sinistro e guardamos a recusa por escrito, se houver.</span></div>
+  </div>
+  <div class="diag-result">
+    <div class="diag-score">0/6</div>
+    <div class="diag-verdict"><b>Marque os itens acima.</b><p>Para ver o resultado.</p></div>
+  </div>
+</div>
+
+<div class="prose reveal">
+  <h2>Fontes</h2>
+  <p>Lei 11.442/2007 (arts. 13, 14 e 18), Lei 14.599/2023, Lei 15.040/2024, Decreto-Lei 73/1966 (arts. 20 e 112) e Decreto 61.867/1967 (Planalto) · Res. CNSP 472/2024, Res. CNSP 496/2026 e Res. SUSEP 91/2026 (Diário Oficial da União) · Súmula 188 do STF, Súmula 229 do STJ e acórdãos do STJ citados (portais oficiais). A Circular SUSEP 354/2007 foi lida em fonte secundária, porque o portal de normas da SUSEP estava fora do ar no dia da conferência. Conferência feita em 14/10/2026. Este material é informativo e não substitui a análise individualizada de cada apólice.</p>
+  <p><a href="afaa-transporte-antt-2026.html">← Voltar ao estudo completo: seguros obrigatórios, RNTRC, CIOT e piso de frete</a></p>
+</div>
+
+  <footer>
+    <div class="fl">
+      ALEX FARIAS &amp; ADVOGADOS ASSOCIADOS · OAB/SP 381.442<br>Panorama/SP · Atendimento nacional por protocolo digital e videoconferência
+    </div>
+    <p class="disclaimer">Conteúdo de caráter informativo e educacional. Não constitui consultoria jurídica para caso concreto. Cada situação exige análise individualizada. Dados pessoais são tratados conforme a LGPD (Lei 13.709/2018).</p>
+  </footer>
+
+</div>
+
+<script>
+  // progress bar
+  const prog=document.getElementById('progress');
+  window.addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const sc=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    prog.style.width=sc+'%';
+  });
+  // reveal
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // scenes (accordion)
+  function toggleScene(el){el.parentElement.classList.toggle('open');}
+  // diagnostic (generic: reads data-verdicts JSON on #diag if present)
+  function toggleDiag(el){
+    el.classList.toggle('on');
+    const root=el.closest('.diag');
+    const total=root.querySelectorAll('.diag-q').length;
+    const on=root.querySelectorAll('.diag-q.on').length;
+    root.querySelector('.diag-score').textContent=on+'/'+total;
+    const v=root.querySelector('.diag-verdict');
+    let verdicts=[];
+    try{verdicts=JSON.parse(root.getAttribute('data-verdicts')||'[]');}catch(e){}
+    if(verdicts.length){
+      const band=verdicts.find(x=>on<=x.max)||verdicts[verdicts.length-1];
+      if(band){v.innerHTML='<b>'+band.b+'</b><p>'+band.p+'</p>';}
+    }
+  }
+  // router (generic: buttons call rGo/rRes; results from data-results JSON on .router)
+  function rShow(id){document.querySelectorAll('.r-step').forEach(s=>s.classList.remove('active'));const t=document.getElementById(id);if(t)t.classList.add('active');}
+  function rSet(n){const root=document.querySelector('.router');if(!root)return;root.querySelectorAll('.r-prog i').forEach((p,i)=>p.classList.toggle('on',i<n));}
+  function rGo(id){rShow(id);rSet(2);}
+  function rRes(k){
+    const root=document.querySelector('.router');let map={};
+    try{map=JSON.parse(root.getAttribute('data-results')||'{}');}catch(e){}
+    const r=map[k];if(!r)return;
+    rShow('rresult');rSet(3);
+    const el=root.querySelector('.r-result');el.style.setProperty('--rc',r.c||'var(--accent)');
+    root.querySelector('#rTitle').textContent=r.t||'';
+    root.querySelector('#rWhy').textContent=r.why||'';
+  }
+  function rReset(){rShow('rq1');rSet(1);}
+  // copy prompt
+  function copyPrompt(btn){
+    const txt=btn.closest('.prompt').querySelector('pre').innerText;
+    navigator.clipboard.writeText(txt).then(()=>{
+      btn.textContent='copiado ✓';btn.classList.add('done');
+      setTimeout(()=>{btn.textContent='copiar';btn.classList.remove('done');},2000);
+    }).catch(()=>{btn.textContent='selecione e copie';});
+  }
+</script>
+</body>
+</html>
