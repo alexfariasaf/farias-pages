@@ -124,7 +124,8 @@ strong{color:var(--grafite);font-weight:700}
           mask-image:radial-gradient(ellipse at 75% 40%,#000 0%,transparent 65%)}
 .abertura::after{content:"";position:absolute;width:640px;height:640px;border-radius:50%;
   background:radial-gradient(circle,rgba(46,86,128,.9),transparent 70%);right:-160px;top:-120px;pointer-events:none}
-.abertura .env{position:relative;z-index:1;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center;width:100%}
+.abertura .env{position:relative;z-index:1;width:100%}
+.abertura .env>div{max-width:860px}
 .abertura .selo{display:inline-flex;flex-wrap:wrap;gap:10px 18px;font-size:.84rem;font-weight:700;letter-spacing:.16em;
   text-transform:uppercase;color:var(--dourado-claro);margin-bottom:26px}
 .abertura .selo span+span::before{content:"·";margin-right:18px;color:rgba(217,187,108,.55)}
@@ -137,18 +138,6 @@ strong{color:var(--grafite);font-weight:700}
 .pilares li{display:flex;align-items:center;gap:10px}
 .pilares li::before{content:"";width:8px;height:8px;border:1.5px solid var(--dourado);transform:rotate(45deg)}
 
-/* foto da abertura: moldura dourada que se revela em volta (o símbolo não aparece aqui) */
-.foto-abertura{position:relative;justify-self:end;width:100%;max-width:410px;margin:20px 36px 36px 0}
-.foto-abertura .moldura{position:relative;z-index:1;overflow:hidden;border-radius:var(--raio);
-  box-shadow:0 30px 60px rgba(5,15,30,.45);opacity:0;transform:translateY(18px);animation:surgir 1.1s .25s var(--curva) forwards}
-.foto-abertura img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
-.foto-abertura .quadro{position:absolute;z-index:0;border:1.5px solid var(--dourado);border-radius:var(--raio);pointer-events:none;
-  clip-path:inset(0 100% 100% 0);animation:revelar 1.6s var(--curva) forwards}
-.foto-abertura .q1{inset:18px -18px -18px 18px;animation-delay:.6s}
-.foto-abertura .q2{inset:36px -36px -36px 36px;opacity:.35;animation-delay:.9s}
-@keyframes revelar{to{clip-path:inset(0 0 0 0)}}
-@keyframes surgir{to{opacity:1;transform:none}}
-
 .desce{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:1;width:26px;height:42px;
   border:1.5px solid rgba(255,255,255,.35);border-radius:14px}
 .desce::after{content:"";position:absolute;left:50%;top:8px;width:3px;height:8px;margin-left:-1.5px;border-radius:2px;
@@ -160,37 +149,6 @@ strong{color:var(--grafite);font-weight:700}
 .entra:nth-child(2){animation-delay:.12s}.entra:nth-child(3){animation-delay:.24s}
 .entra:nth-child(4){animation-delay:.36s}.entra:nth-child(5){animation-delay:.48s}
 @keyframes entrar{to{opacity:1;transform:none}}
-
-/* ==========================================================================
-   O TITULAR
-   ========================================================================== */
-.titular{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}
-.retrato{position:sticky;top:120px;margin:0 18px 18px 0}
-.retrato::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:2px solid var(--dourado);
-  border-radius:var(--raio);transition:transform .9s var(--curva)}
-.retrato .moldura{position:relative;overflow:hidden;border-radius:var(--raio);background:#8E959E;box-shadow:var(--sombra)}
-.retrato img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 24%;transition:transform 1.4s var(--curva)}
-.retrato:hover img{transform:scale(1.03)}
-.retrato .legenda{position:absolute;left:-14px;bottom:42px;background:var(--azul);color:var(--branco);
-  padding:14px 20px;border-left:3px solid var(--dourado);box-shadow:var(--sombra)}
-.retrato .legenda strong{display:block;font-family:var(--serif);color:var(--branco);font-size:1.08rem}
-.retrato .legenda span{font-size:.84rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dourado-claro)}
-.js .reveal.retrato .moldura{clip-path:inset(100% 0 0 0);transition:clip-path 1.2s var(--curva)}
-.js .reveal.retrato.in .moldura{clip-path:inset(0 0 0 0)}
-.js .reveal.retrato::before{transform:translate(-18px,-18px)}
-.js .reveal.retrato.in::before{transform:none}
-
-.bio h2{margin-bottom:6px}
-.bio .cargo{font-size:1rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dourado-texto);margin-bottom:26px}
-.bio p{margin-bottom:18px}
-.bio p.destaque{font-family:var(--serif);font-size:1.32rem;line-height:1.5;color:var(--azul);border-left:3px solid var(--dourado);
-  padding-left:22px;margin:30px 0}
-.bio h3{font-size:1.18rem;margin:36px 0 16px}
-.formacao{list-style:none;display:grid;gap:2px}
-.formacao li{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--linha)}
-.formacao li::before{content:"";width:9px;height:9px;margin-top:9px;border:1.5px solid var(--dourado);transform:rotate(45deg)}
-.formacao span{display:block;font-size:.92rem;color:var(--suave)}
-.institucional{margin-top:30px;background:var(--cinza-nevoa);border-left:3px solid var(--azul);padding:18px 22px;font-size:1rem}
 
 /* ==========================================================================
    NÚMEROS
@@ -282,10 +240,6 @@ strong{color:var(--grafite);font-weight:700}
 /* ==========================================================================
    CONTATO
    ========================================================================== */
-.foto-metodo{margin-top:34px;max-width:340px;overflow:hidden;border-radius:var(--raio);box-shadow:var(--sombra);
-  border-bottom:3px solid var(--dourado)}
-.foto-metodo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;transition:transform 1.4s var(--curva)}
-.foto-metodo:hover img{transform:scale(1.03)}
 .contato{display:grid;grid-template-columns:.78fr 1.22fr;gap:64px;align-items:center}
 .foto-contato{position:relative;margin:0 18px 18px 0}
 .foto-contato::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:2px solid var(--dourado);border-radius:var(--raio)}
@@ -347,12 +301,8 @@ strong{color:var(--grafite);font-weight:700}
    RESPONSIVO
    ========================================================================== */
 @media (max-width:1020px){
-  .abertura .env{grid-template-columns:1fr}
-  .foto-abertura{justify-self:start;max-width:340px;margin:10px 36px 36px 0}
-  .foto-metodo{max-width:300px}
   .foto-contato{max-width:420px}
-  .titular,.metodo,.contato{grid-template-columns:1fr;gap:48px}
-  .retrato{max-width:460px;position:relative;top:auto}
+  .metodo,.contato{grid-template-columns:1fr;gap:48px}
   .metodo .cabeca{position:static}
   .areas{grid-template-columns:repeat(2,1fr)}
   .equipe{grid-template-columns:repeat(2,1fr)}
@@ -384,22 +334,17 @@ strong{color:var(--grafite);font-weight:700}
   .passos{padding-left:70px}
   .passo .n{left:-70px;width:48px;height:48px}
   .passos::before,.passos::after{left:23px}
-  .retrato .legenda{left:0}
   .desce{display:none}
   .abertura h1{font-size:2.15rem}
   .abertura .selo{flex-direction:column;gap:6px}
   .abertura .selo span+span::before{display:none}
-  .foto-abertura{max-width:calc(100% - 24px);margin:6px 24px 24px 0}
-  .foto-abertura .q2{display:none}
   .cartao dl{grid-template-columns:1fr}
 }
 
 /* quem desliga animações no aparelho vê tudo parado e completo */
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .reveal,.cascata>*,.entra,.foto-abertura .moldura{opacity:1!important;transform:none!important}
-  .foto-abertura .quadro{clip-path:none!important}
-  .reveal.retrato .moldura{clip-path:none!important}
+  .reveal,.cascata>*,.entra{opacity:1!important;transform:none!important}
 }
 
 @media print{
