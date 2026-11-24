@@ -69,26 +69,30 @@
   }
 
   /* ---------- contadores ---------- */
-  var fmt = new Intl.NumberFormat("pt-BR");
+  /* data-casas="1" mostra uma casa decimal (6,7) */
+  function casas(el) { return parseInt(el.dataset.casas || "0", 10) || 0; }
   function escrever(el, n) {
-    el.textContent = (el.dataset.prefixo || "") + fmt.format(n) + (el.dataset.sufixo || "");
+    var c = casas(el);
+    var txt = n.toLocaleString("pt-BR", { minimumFractionDigits: c, maximumFractionDigits: c });
+    el.textContent = (el.dataset.prefixo || "") + txt + (el.dataset.sufixo || "");
   }
   function contar(el) {
-    var alvo = parseInt(el.dataset.alvo, 10);
+    var alvo = parseFloat(el.dataset.alvo);
     if (isNaN(alvo)) return;
+    var f = Math.pow(10, casas(el));
     var dur = 1800, ini = null;
     function passo(t) {
       if (ini === null) ini = t;
       var p = Math.min((t - ini) / dur, 1);
       var e = 1 - Math.pow(1 - p, 4); /* desacelera no fim */
-      escrever(el, Math.round(alvo * e));
+      escrever(el, p < 1 ? Math.round(alvo * e * f) / f : alvo);
       if (p < 1) requestAnimationFrame(passo);
     }
     requestAnimationFrame(passo);
   }
   var contadores = document.querySelectorAll("[data-alvo]");
   function valorFinal() {
-    contadores.forEach(function (el) { escrever(el, parseInt(el.dataset.alvo, 10)); });
+    contadores.forEach(function (el) { escrever(el, parseFloat(el.dataset.alvo)); });
   }
   if (!semMovimento && "IntersectionObserver" in window) {
     contadores.forEach(function (el) {
